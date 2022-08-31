@@ -1,13 +1,90 @@
-body {
+
+:root{
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
+
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+
+
+.form-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  
+}
+
+
+.Auth-form {
+  width: 420px;
+  box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: white;
+  margin-top: 30px;
+}
+
+.Auth-form-title {
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: 24px;
+  color: rgb(34, 34, 34);
+  font-weight: 800;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(34, 34, 34);
+}
+.homePage{
+  margin-top: 5rem;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+  height: auto;
+  gap: 10px;
+} 
+.title{
+  background-color: azure;
+  width: 50%;
+  height: 10rem;
+  text-align: center;
+  margin-top: 10px;
+}
+.intro{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 20px;
+  background-color: azure;
+  padding: 10px;
+  height: 10rem;
+  width: 40%;
+} 
+.btn-group{
+  display: flex;
+ gap: 20px;
+ margin-top: 10px;
+}
+
+.error{
+  color: red;
+  font-size: 18px;
+}
+
+@media screen and (max-width:720px) {
+  .homePage{
+    flex-direction: column;
+  }
+  .title{
+    width: 90%;
+  }
+  .intro{
+    width: 90%;
+  }
 }
