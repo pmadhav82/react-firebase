@@ -1,11 +1,14 @@
 import React, {useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
-
 import { signInWithEmailAndPassword } from "firebase/auth";
 import{auth} from "../fireConfig";
+import GoogleButton from "react-google-button";
+import { async } from "@firebase/util";
+import { useAuth } from "./contexts/AuthContext";
 
 const Login = ()=>{
+const {googleSignIn} = useAuth();
+
 const[disable,setDisable] = useState(false);
 const navigate = useNavigate();
 const [error, setError] = useState(null)
@@ -19,12 +22,25 @@ setLoginUser({...user, [e.target.name]:e.target.value})
 
 }
 
-
+const googleLogin = async ()=>{
+    try{
+      setDisable(true);
+      await googleSignIn();
+    
+    }catch(er){
+      setError(er.message)
+    }
+    setDisable(false)
+        
+}
 
 const formHandeler = async (e)=>{
   e.preventDefault();
 setDisable(true);
-if(user.email.trim()=== "" || user.password.trim()=== "") return setError("All fields are required to fill");
+if(user.email.trim()=== "" || user.password.trim()=== ""){
+  setDisable(false)
+  return setError("All fields are required to fill");
+}
 
 try{
 
@@ -43,10 +59,10 @@ setDisable(false);
 
     return( <div className="form-container">
     
-    <form className="Auth-form">
+      <div className="Auth-form">
+    <form >
 
-      <div className="Auth-form-content">
-        <h3 className="Auth-form-title">Sign In</h3>
+        <h3 className="Auth-form-title m-0">Sign In</h3>
         <div className="text-center">
               Not registered yet?
               <span className="link-primary">
@@ -55,7 +71,7 @@ setDisable(false);
 
             {error && <div className="”alert error"> {error} </div>}
             </div>
-        <div className="form-group mt-3">
+        <div className="form-group mt-1">
           <label>Email address</label>
           <input
             type="email"
@@ -66,7 +82,7 @@ setDisable(false);
             placeholder="Enter email"
           />
         </div>
-        <div className="form-group mt-3">
+        <div className="form-group mt-1">
           <label>Password</label>
           <input
           name="password"
@@ -82,11 +98,9 @@ setDisable(false);
             Submit
           </button>
         </div>
-        <p className="forgot-password text-right mt-2">
-          Forgot <Link to = "/passwordreset" > Password</Link>
-        </p>
-      </div>
     </form>
+    <GoogleButton className="m-2" onClick={googleLogin}/>
+      </div>
    
   </div>)
 

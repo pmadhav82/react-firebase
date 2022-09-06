@@ -1,18 +1,13 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
-
-
-import {createUserWithEmailAndPassword, GoogleAuthProvider,  signInWithPopup ,getAuth} from "firebase/auth";
-//import { auth } from "../fireConfig";
-
+import { useAuth } from "./contexts/AuthContext";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../fireConfig";
+import {GoogleButton} from "react-google-button"
 const Signup = ()=>{
-
- const provider = new GoogleAuthProvider();
-const auth = getAuth();
 const[disabled,setDisabled] = useState(false);
-
 const navigate = useNavigate();
+const {googleSignIn} = useAuth();
 
 const [user,setSignUser] = useState({
   email: "",
@@ -24,13 +19,15 @@ const inputHandeler = (e)=>{
 }
 
 
-const signInWithGoogle = async(e)=>{
+const signInWithGoogle = async()=>{
   try{
+
     setDisabled(true);
-await signInWithPopup(auth,provider);
+await googleSignIn();
+navigate("/profile");
+
 setError("");
 setDisabled(false);
-navigate("/profile");
   } catch(er){
     setError(er.message)
   }
@@ -116,10 +113,10 @@ setDisabled(false)
     </form>
 
               <div className="btn-group">
-            
-      <button className="btn btn-secondary" onClick={signInWithGoogle}>Login with google</button>
-    
-           <Link to = "/passwordreset"  className="btn link"> Reset Password</Link>
+          <GoogleButton onClick = {signInWithGoogle}/>
+      {/* <button className="btn btn-secondary" onClick={signInWithGoogle}>Login with google</button> */}
+  
+           {/* <Link to = "/passwordreset"  className="btn link"> Reset Password</Link> */}
         
       </div>
       </div>
