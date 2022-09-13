@@ -1,6 +1,8 @@
 import React from "react";
 
-const TaskCard = ({task,taskDetails})=>{
+import  DeleteTask from "./DeleteTask";
+
+const TaskCard = ({task,taskDetails,id})=>{
 
 
     return(
@@ -9,8 +11,8 @@ const TaskCard = ({task,taskDetails})=>{
   <div className="card-body">
     <p className ="card-text"> {taskDetails}</p>
     <div className="btn-group">
-    <button className="btn btn-primary">Delete</button>
-    <button className="btn btn-primary">Edit</button>
+    <DeleteTask id = {id}/>
+
     </div>
   </div>
 </div>

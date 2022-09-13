@@ -34,6 +34,7 @@ return ()=> unsub();
     {tasks.map((t)=>{
          return  <TaskCard key={t.id}
           task = {t.task} 
+          id = {t.id}
          taskDetails ={t.taskDetails} 
          />
             

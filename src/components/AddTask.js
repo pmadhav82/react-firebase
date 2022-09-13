@@ -4,13 +4,14 @@ import Form from 'react-bootstrap/Form';
 import {db} from "../fireConfig";
 import {collection, addDoc, Timestamp} from "firebase/firestore";
 import { useAuth } from "./contexts/AuthContext";
-
+import { useNavigate } from "react-router-dom";
 
 const AddTask = ()=>{
 let {user} = useAuth();
 const [isDisable,setIsDisable] = useState(false)
 const [error,setError] = useState("");
 const taskRef = collection(db,"tasks");
+let navigate = useNavigate();
 
 const [task, setTask] = useState({
 
@@ -24,6 +25,7 @@ setTask({...task,[e.target.name]:e.target.value})
 }
 
 const formHandeler =  async (e)=>{
+  
     e.preventDefault();
 setIsDisable(true);
 if(task.task === "" || task.taskDetails === ""){
@@ -33,6 +35,7 @@ if(task.task === "" || task.taskDetails === ""){
      const mydoc = {created:Timestamp.now(),userEmail:user.email,...task};
     try{
        await addDoc(taskRef,mydoc);
+navigate("/profile/tasks")
 
     }catch(er){
     setError(er.message);
