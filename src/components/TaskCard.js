@@ -1,6 +1,8 @@
 import React from "react";
 
 import  DeleteTask from "./DeleteTask";
+import EditTask from "./EditTask";
+
 
 const TaskCard = ({task,taskDetails,id})=>{
 
@@ -12,7 +14,7 @@ const TaskCard = ({task,taskDetails,id})=>{
     <p className ="card-text"> {taskDetails}</p>
     <div className="btn-group">
     <DeleteTask id = {id}/>
-
+<EditTask id = {id} toEditTask = {task} toEditTaskDetails ={taskDetails} />
     </div>
   </div>
 </div>

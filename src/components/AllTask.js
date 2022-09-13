@@ -21,15 +21,13 @@ const unsub = onSnapshot(q,(snapshot)=>{
         }
     })
     setTasks(taskRef);
-    console.log(taskRef)
-    console.log(tasks)
 })
 return ()=> unsub();
 
 },[])
 
     return(<>
-    
+    {tasks.length ===0 && <div><h2>You do not have any tasks.</h2></div>}
     <div className="task-container">
     {tasks.map((t)=>{
          return  <TaskCard key={t.id}
