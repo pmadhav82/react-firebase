@@ -1,11 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "./contexts/AuthContext";
 const Home = ()=>{
+  const {user}= useAuth();
 
     return(<>
   
   <main className="homePage">
- <div className="title">
+    {!user &&  <><div className="title">
 <h2>FireStore</h2>
 <div className="btn-group">
   <Link className='btn btn-primary' role="button" to = "/login">Log In</Link>
@@ -17,6 +19,10 @@ const Home = ()=>{
 <h5>Your are in a right place. FireStore provides all solution of cloud storage</h5>
 
  </div>
+ </>
+   }
+   
+ 
   </main>
 
 
