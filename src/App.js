@@ -9,6 +9,9 @@ import Profile from './components/Profile';
 import { Route ,Routes} from "react-router-dom";
 import {AuthProvider} from "./components/contexts/AuthContext";
 import {ProtectedRoute, RedirectRoute} from "./components/contexts/ProtectedRoute";
+import AddTask from './components/AddTask';
+import AllTask from './components/AllTask';
+
 function App() {
   return (<>
   
@@ -28,10 +31,18 @@ function App() {
   } 
    />
 
-<Route path='/profile' element = {<ProtectedRoute>
+<Route path='/profile' element = {
+
+<ProtectedRoute>
   <Profile/>
 </ProtectedRoute>
-  }/>
+
+  }>
+     <Route path='addTask' element = {<AddTask/>}/>
+     <Route path='tasks' element = {<AllTask/>}/>
+    </Route> 
+ 
+  
 
     </Routes>
 

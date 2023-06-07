@@ -9,7 +9,7 @@ import Container from 'react-bootstrap/Container';
 
     function Navigation() {
 const {user} = useAuth();
-console.log(user)
+
       return (<>
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Container>
