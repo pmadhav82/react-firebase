@@ -1,31 +1,12 @@
 import React from "react";
 import Sidebar from "./Sidebar";
 //import {useAuth} from "../components/contexts/AuthContext";
-import { signOut } from "firebase/auth";
-import {auth} from "../fireConfig";
-
-import { Outlet} from "react-router-dom";
-
+import AllTask from "./AllTask";
 const Profile = ()=>{
-
-
-
-
-
-const logoutHandler = async ()=>{
-try{
-await signOut(auth);
-}catch(er){
-   console.log(er.message);
-}
-}
-
-
    return(<>
-   
 <div className="container">
-   <Sidebar logOut = {logoutHandler}/>     
-<Outlet/>
+   <Sidebar/>     
+<AllTask/>
      </div>
    </>)
 

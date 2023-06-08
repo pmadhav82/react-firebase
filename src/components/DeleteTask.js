@@ -26,7 +26,7 @@ const deleteHandeler = async ()=>{
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button className='btn btn-success' variant="primary" onClick={handleShow}>
         Delete
       </Button>
 

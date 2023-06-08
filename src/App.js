@@ -39,7 +39,7 @@ function App() {
 
   }>
      <Route path='addTask' element = {<AddTask/>}/>
-     <Route path='tasks' element = {<AllTask/>}/>
+    
     </Route> 
  
   

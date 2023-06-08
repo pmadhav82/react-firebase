@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import{auth} from "../fireConfig";
 import GoogleButton from "react-google-button";
-import { async } from "@firebase/util";
 import { useAuth } from "./contexts/AuthContext";
 
 const Login = ()=>{
