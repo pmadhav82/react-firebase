@@ -1,18 +1,27 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./contexts/AuthContext";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
 import { auth } from "../fireConfig";
-import {GoogleButton} from "react-google-button"
+import {GoogleButton} from "react-google-button";
+import { db } from "../fireConfig";
+import { collection, addDoc, Timestamp } from "@firebase/firestore";
+
 const Signup = ()=>{
 const[disabled,setDisabled] = useState(false);
 const navigate = useNavigate();
 const {googleSignIn} = useAuth();
 
 const [user,setSignUser] = useState({
+  name: "",
   email: "",
   password: ""
 });
+
+
+
+// userRef
+const userRef = collection(db,"userDetail");
 
 const inputHandeler = (e)=>{
   setSignUser({...user,[e.target.name]:e.target.value})
@@ -23,7 +32,16 @@ const signInWithGoogle = async()=>{
   try{
 
     setDisabled(true);
-await googleSignIn();
+    try{
+       await googleSignIn();
+
+    } catch(er){
+      setError(er.message);
+      setDisabled(false);
+    }
+
+
+
 navigate("/profile");
 
 setError("");
@@ -43,15 +61,26 @@ const [error, setError] = useState(null)
 const  formHandeler = async (e)=>{
   e.preventDefault();
 setDisabled(true);
-  if( user.email.trim() === "" || user.password.trim()=== "")
+  if( user.email.trim() === "" || user.password.trim()=== "" || user.name.trim()=== "")
   {setDisabled(false);
     return (setError("All fields are required to fill"))}
  
 try{
 
    await createUserWithEmailAndPassword(auth, user.email,user.password);
-setSignUser({
 
+   await updateProfile(auth.currentUser,{displayName: user.name})
+   // save user data in userDetail collection
+const mydoc = {
+  created:Timestamp.now(),
+  userName: user.name,
+  userEmail: user.email
+};
+
+await addDoc(userRef,mydoc);
+
+setSignUser({
+name: "",
   email: "",
   password: ""
 })
@@ -86,6 +115,15 @@ setDisabled(false)
             </div>
 
             <form>
+            <div className="form-group mt-1">
+          <label>Name</label>
+          <input
+            type="text" onChange={inputHandeler} value={user.name} name = "name"
+            className="form-control mt-1"
+            placeholder="Enter name"
+          />
+        </div>
+
         <div className="form-group mt-1">
           <label>Email address</label>
           <input

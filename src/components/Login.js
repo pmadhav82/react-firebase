@@ -28,6 +28,7 @@ const googleLogin = async ()=>{
     
     }catch(er){
       setError(er.message)
+      setDisable(false);
     }
     setDisable(false)
         
