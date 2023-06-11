@@ -1,8 +1,6 @@
 import React from "react"
 import "./Sidebar.css";
 import AddTask from "./AddTask";
-import LogOut from "./LogOut";
-
 
 const Sidebar = ()=>{
 
@@ -11,7 +9,7 @@ const Sidebar = ()=>{
     <div className="sidebar">
 
 <div className="sidebarItem">
-  <LogOut/>
+  
 <AddTask/>
 </div> 
 

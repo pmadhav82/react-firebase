@@ -7,14 +7,15 @@ import Container from 'react-bootstrap/Container';
     import {useAuth} from "../components/contexts/AuthContext";
 
 
+
     function Navigation() {
-const {user} = useAuth();
+const {user, logoutHandler} = useAuth();
 const [showDropDown, setShowDropDown] = useState(false);
 
 const dropDownHandeler = ()=> setShowDropDown(!showDropDown);
 
       return (<>
-        <Navbar  expand="lg" bg="dark" variant="dark">
+        <Navbar expand="lg" bg="dark" variant="dark">
           <Container>
             <Navbar.Brand>
             <Link  className='nav-link' to = "/">
@@ -35,26 +36,30 @@ const dropDownHandeler = ()=> setShowDropDown(!showDropDown);
 
   {user ? <>
   
-    <NavDropdown
-            id="nav-dropdown"
+    <NavDropdown 
+             id="nav-dropdown-dark-example"
+            
+             menuVariant="dark"
             title={
               <Image
-                src="user-profile-picture.jpg"
+                src={user.photoURL? user.photoURL : "avatar.png"}
                 roundedCircle
-                width={30}
-                height={30}
+                width={40}
+                height={40}
               />
             }
             show={showDropDown}
             onToggle={dropDownHandeler}
           >
 
-            <NavDropdown.Item >Madhav Pandey</NavDropdown.Item>
+            <NavDropdown.Item >{user.displayName}</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item >
-              <Link  to= "/Profile">Profile</Link>
+              <Link className='btn btn-primary'  to= "/Profile">Profile</Link>
             </NavDropdown.Item>
-            <NavDropdown.Item >Logout</NavDropdown.Item>
+            <NavDropdown.Item >
+            <button onClick={logoutHandler} className='btn btn-success'>Logout</button>
+              </NavDropdown.Item>
           </NavDropdown>
   
   </> :<>
