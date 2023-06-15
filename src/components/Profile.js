@@ -6,10 +6,10 @@ import ProfileCard from "./ProfileCard";
 import { useAuth } from "./contexts/AuthContext";
 
 const Profile = ()=>{
-   const {user} = useAuth();
+   const {user, userProfileUrl} = useAuth();
    return(<>
 <div className="container m-2">
-<ProfileCard key={user.email}  user = {user} />
+<ProfileCard key={user.email}  user = {user}  userProfileUrl = {userProfileUrl}/>
      </div>
    </>)
 

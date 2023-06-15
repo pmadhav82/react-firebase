@@ -9,7 +9,7 @@ import Container from 'react-bootstrap/Container';
 
 
     function Navigation() {
-const {user, logoutHandler} = useAuth();
+const {user, logoutHandler, userProfileUrl} = useAuth();
 const [showDropDown, setShowDropDown] = useState(false);
 
 const dropDownHandeler = ()=> setShowDropDown(!showDropDown);
@@ -42,7 +42,7 @@ const dropDownHandeler = ()=> setShowDropDown(!showDropDown);
              menuVariant="dark"
             title={
               <Image
-                src={user.photoURL? user.photoURL : "avatar.png"}
+                src={userProfileUrl}
                 roundedCircle
                 width={40}
                 height={40}

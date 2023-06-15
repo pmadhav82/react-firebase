@@ -1,18 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Container, Row, Col, Image } from "react-bootstrap";
 import UploadProfilePicture from "./UploadProfilePicture";
+import { auth } from "../fireConfig";
 
-const ProfileCard = ({ user})=>{
-    
+const ProfileCard = ({ user, userProfileUrl})=>{
+console.log(userProfileUrl);
 
-console.log(user)
     return<>
     
     <Container>
   <Row className=" d-flex justify-content-center align-items-center">
     <Col xs={6} md={4}>
 
- <Image src={user.photoURL} alt="242x200"  roundedCircle
+ <Image src={userProfileUrl} alt="242x200"  roundedCircle
                 width={150}
                 height={150} />
 
