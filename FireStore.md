@@ -140,3 +140,55 @@ if(url){
 export default ProgressBar
 
 ```
+
+saving doc
+
+let ref = collection(db, "imageDoc");
+ await addDoc(ref,mydoc);
+
+
+ // ImageGrid
+
+ imageGrid.js
+
+ const imageGrid = ()=>{
+
+
+    return <>
+    
+    
+    </>
+ }
+
+ export default imageGrid.js
+
+ import in app.js
+
+
+
+ useFirestore.js
+
+useState, useEffect
+storage
+
+const useFirestore = (query) =>{
+
+const [docs , setDocs] = useState([]);
+
+useEffect(()=>{
+    let documents = [];
+const unsub = onSnapShot(query, (snap)=>{
+snap.forEach(doc=>{
+    documents.push({id:doc.id,...doc.data()});
+})
+setDocs(documents);
+})
+
+return unsub();
+},[query])
+
+
+return {docs}
+
+}
+

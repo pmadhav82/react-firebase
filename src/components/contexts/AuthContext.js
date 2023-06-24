@@ -24,6 +24,7 @@ export const AuthProvider = ({children})=>{
           }else{
             setUserProfileUrl("avatar.png");
           }
+          
       }
       
   })

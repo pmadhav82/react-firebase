@@ -20,8 +20,6 @@ const [user,setSignUser] = useState({
 
 
 
-// userRef
-const userRef = collection(db,"userDetail");
 
 const inputHandeler = (e)=>{
   setSignUser({...user,[e.target.name]:e.target.value})
@@ -69,15 +67,7 @@ try{
 
    await createUserWithEmailAndPassword(auth, user.email,user.password);
 
-   await updateProfile(auth.currentUser,{displayName: user.name})
-   // save user data in userDetail collection
-const mydoc = {
-  created:Timestamp.now(),
-  userName: user.name,
-  userEmail: user.email
-};
-
-await addDoc(userRef,mydoc);
+   await updateProfile(auth.currentUser,{displayName: user.name,photoURL:"avatar.png"})
 
 setSignUser({
 name: "",

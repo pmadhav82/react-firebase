@@ -8,7 +8,7 @@ function Progress({file, setFile}) {
 
 useEffect( ()=>{
 if(url){
-    console.log(url)
+  
     setFile(null);
 }
 
@@ -19,7 +19,7 @@ if(url){
   return <>
   {file && <> 
   
-  <ProgressBar now={progress} label={`${progress}%`} />
+  <ProgressBar now={progress} className='m-2' label={`${progress}%`} />
   </>}
   
   </>

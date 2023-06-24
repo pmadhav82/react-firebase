@@ -2,24 +2,43 @@ import React, { useEffect } from "react";
 import { Button, Container, Row, Col, Image } from "react-bootstrap";
 import UploadProfilePicture from "./UploadProfilePicture";
 import { auth } from "../fireConfig";
-
+import ImageModal from "./ImageModal";
 const ProfileCard = ({ user, userProfileUrl})=>{
-console.log(userProfileUrl);
+
 
     return<>
     
     <Container>
   <Row className=" d-flex justify-content-center align-items-center">
-    <Col xs={6} md={4}>
+    <Col>
 
  <Image src={userProfileUrl} alt="242x200"  roundedCircle
                 width={150}
                 height={150} />
+                </Col>
+                </Row>
+                <Row>
 
-    <h3>{user.displayName}</h3>  
+<Col>
+
+<h4>{user.displayName}</h4> 
+</Col>
+
+                </Row>
+                <Row>
+
+<Col>
+
           <UploadProfilePicture/>
-    </Col>
-    </Row>
+        
+</Col>
+
+   
+
+
+                </Row>
+    
+
     </Container>
     </>
 }

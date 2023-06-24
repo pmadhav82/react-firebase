@@ -2,6 +2,7 @@
 import React from "react";
 import { Link, Navigate} from "react-router-dom";
 import { Container, Row,Col, Button } from "react-bootstrap";
+import ImageModal from "./ImageModal";
 const Welcome = ()=>{
 
 
@@ -25,7 +26,6 @@ const Welcome = ()=>{
         
 </Col>
 </Row>
-
 <Row>
   <Col>
 
@@ -44,10 +44,9 @@ const Welcome = ()=>{
 
   </Button>
 
+ 
   </Col>
 </Row>
-
-
 
   </Container>
   

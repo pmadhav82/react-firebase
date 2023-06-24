@@ -10,7 +10,7 @@ const [file, setFile] = useState(null);
 const [error, setError] = useState(null);
 
 const handleChange = (event)=>{
-let fileType = ["image/png", "image/jpeg"];
+let fileType = ["image/png", "image/jpeg", "image/jpg"];
 
 
 let selectedFile = event.target.files[0];
@@ -31,7 +31,7 @@ setError("Please select an image file");
 <div className="info">{error && <div className="error"> {error}</div>}</div>
 
             <input onChange={handleChange} type="file" id="file" />
-  <label for="file" class="btn-2">Change profile picture</label>
+  <label for="file" className="btn-2">Change profile picture</label>
         
 {file && <Progress file = {file} setFile = {setFile}/> }
     </form>
