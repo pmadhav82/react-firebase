@@ -1,8 +1,8 @@
 import React from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import useStorage from './hooks/useStorage';
+import useStorage from '../hooks/useStorage';
 import { useEffect } from 'react';
-function Progress({file, setFile}) {
+function Progress({file, setFile, handleClose}) {
 
   const {progress,url} = useStorage(file);
 
@@ -10,6 +10,7 @@ useEffect( ()=>{
 if(url){
   
     setFile(null);
+    handleClose()
 }
 
 

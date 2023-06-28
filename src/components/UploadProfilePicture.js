@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./Sidebar.css";
-import Progress from "../ProgressBar";
+import Progress from "./ProgressBar";
 
 
-const UploadProfilePicture = ()=>{
+const UploadProfilePicture = ({handleClose})=>{
 
 const [file, setFile] = useState(null);
 
@@ -18,7 +18,7 @@ let selectedFile = event.target.files[0];
 
 if(selectedFile && fileType.includes(selectedFile.type)){
 setFile(selectedFile);
-
+setError(null);
 }else{
 setFile(null);
 setError("Please select an image file");
@@ -33,7 +33,7 @@ setError("Please select an image file");
             <input onChange={handleChange} type="file" id="file" />
   <label for="file" className="btn-2">Change profile picture</label>
         
-{file && <Progress file = {file} setFile = {setFile}/> }
+{file && <Progress handleClose ={handleClose} file = {file} setFile = {setFile}/> }
     </form>
        
     </>
