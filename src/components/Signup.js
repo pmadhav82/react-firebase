@@ -4,8 +4,6 @@ import { useAuth } from "./contexts/AuthContext";
 import { createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
 import { auth } from "../fireConfig";
 import {GoogleButton} from "react-google-button";
-import { db } from "../fireConfig";
-import { collection, addDoc, Timestamp } from "@firebase/firestore";
 
 const Signup = ()=>{
 const[disabled,setDisabled] = useState(false);

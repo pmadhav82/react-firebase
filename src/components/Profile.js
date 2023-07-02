@@ -3,22 +3,39 @@ import ProfileCard from "./ProfileCard";
 import { useAuth } from "./contexts/AuthContext";
 import ImageGrid from "./ImageGrid";
 import ImageModal from "./ImageModal";
-
+import useQuery from "../hooks/useQuery";
+import { query, where, orderBy, collection } from "firebase/firestore";
+import { auth, db} from "../fireConfig";
+import { Col, Container, Row } from "react-bootstrap";
 const Profile = ()=>{
    const {user, userProfileUrl} = useAuth();
-   return(<>
-<div className="profile-wrapper container m-1 d-flex flex-wrap ">
-   <div className="profile-card">
-<ProfileCard key={user.email}  user = {user}  userProfileUrl = {userProfileUrl}/>
-   </div>
-   <div>
-      <ImageModal/>
-   </div>
+   const {docs} = useQuery(query(collection(db, "imageDocs"), where("uid", "==", `${auth.currentUser.uid}`), orderBy("createdAt", "desc")));
 
-     </div>
-     <div className="image-grid">
-     <ImageGrid/>
-  </div>
+    
+   return(<>
+
+<Container className="m-2">
+   <Row>
+
+      <Col>
+<ProfileCard key={user.email}  user = {user}  userProfileUrl = {userProfileUrl}/>
+    
+      
+      </Col>
+
+      <Col>
+      <ImageModal/>
+      </Col>
+   </Row>
+
+
+</Container>
+
+     <Container>
+     <ImageGrid docs = {docs}/>
+
+     </Container>
+  
    </>)
 
 }

@@ -36,7 +36,7 @@ const dropDownHandeler = ()=> setShowDropDown(!showDropDown);
 
   {user ? <>
   
-    <NavDropdown 
+    <NavDropdown style={{right:"100%"}}
              id="nav-dropdown-dark-example"
             
              menuVariant="dark"
