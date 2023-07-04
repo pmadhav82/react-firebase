@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./ImageGrid.css";
-import Post from "./Post";
 import Backdrop from "./Backdrop";
 const ImageGrid = ({docs})=>{
 
