@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./ImageGrid.css";
 import Backdrop from "./Backdrop";
-const ImageGrid = ({docs})=>{
+import EditCaption from "./EditCaption";
+const ImageGrid = ({docs, showBtn})=>{
 
-
-const [showModal, setShowModal] = useState(false);
 const [postDoc, setPostDoc] = useState(null);
 
 console.log(postDoc);
@@ -15,7 +14,7 @@ console.log(postDoc);
       {docs && docs.map((doc)=>{
         return <>
         <div key={doc.id} className="grid-item">
-<img  key={doc.id} onClick= {()=> {setPostDoc(doc)} } src={doc.url}/>
+<img onClick= {()=> {setPostDoc(doc)} } src={doc.url}/>
 
         </div>
 
@@ -26,7 +25,7 @@ console.log(postDoc);
 
     </div>
 
-  {postDoc && <Backdrop doc = {postDoc} setPostDoc = {setPostDoc}/>}
+  {postDoc && <Backdrop doc = {postDoc} setPostDoc = {setPostDoc} key={postDoc.id} showBtn = {showBtn} />}
     </>
 }
 

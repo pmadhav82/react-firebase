@@ -55,10 +55,11 @@ const dropDownHandeler = ()=> setShowDropDown(!showDropDown);
             <NavDropdown.Item >{user.displayName}</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item >
-              <Link className='btn btn-primary'  to= "/Profile">Profile</Link>
+              <Link className='nav-link' to= "/Profile">Profile</Link>
             </NavDropdown.Item>
+            <NavDropdown.Divider></NavDropdown.Divider>
             <NavDropdown.Item >
-            <button onClick={logoutHandler} className='btn btn-success'>Logout</button>
+            <p className='nav-link' onClick={logoutHandler}>Logout</p>
               </NavDropdown.Item>
           </NavDropdown>
   

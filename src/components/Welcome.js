@@ -1,9 +1,20 @@
 
 import React from "react";
-import { Link, Navigate} from "react-router-dom";
+import { Link} from "react-router-dom";
 import { Container, Row,Col, Button } from "react-bootstrap";
-import ImageModal from "./ImageModal";
+import { useAuth } from "./contexts/AuthContext";
+import GoogleButton from "react-google-button";
 const Welcome = ()=>{
+  const {googleSignIn} = useAuth();
+const signInWithGoogle = async ()=>{
+try{
+await googleSignIn();
+
+}catch(er){
+  console.log(er);
+}
+
+}
 
 
     return<>
@@ -46,6 +57,13 @@ const Welcome = ()=>{
 
  
   </Col>
+</Row>
+
+<Row>
+<Col>
+<GoogleButton  label="Continue with Google" onClick={signInWithGoogle}/>
+</Col>
+
 </Row>
 
   </Container>

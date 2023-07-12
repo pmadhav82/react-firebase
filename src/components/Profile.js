@@ -10,8 +10,10 @@ import { Col, Container, Row } from "react-bootstrap";
 const Profile = ()=>{
    const {user, userProfileUrl} = useAuth();
    const {docs} = useQuery(query(collection(db, "imageDocs"), where("uid", "==", `${auth.currentUser.uid}`), orderBy("createdAt", "desc")));
+const showBtn = true;
 
-    
+
+
    return(<>
 
 <Container className="m-2">
@@ -32,7 +34,7 @@ const Profile = ()=>{
 </Container>
 
      <Container>
-     <ImageGrid docs = {docs}/>
+     <ImageGrid docs = {docs} showBtn = {showBtn}  />
 
      </Container>
   

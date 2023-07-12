@@ -39,7 +39,7 @@ if(selectedFil && fileType.includes(selectedFil.type)){
 
 const formHandeler = (e)=>{
 e.preventDefault();
-const storageRef = ref(storage,`Images/${file.name}-${Timestamp.now()}`);
+const storageRef = ref(storage,`Images/${file.name}-${new Date().getTime().toString()}`);
 const uploadTask = uploadBytesResumable(storageRef,file);
 
 

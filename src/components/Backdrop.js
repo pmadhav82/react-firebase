@@ -1,8 +1,11 @@
-import React from "react";
-import { X } from "react-bootstrap-icons";
+import React, { useId } from "react";
+import { X} from "react-bootstrap-icons";
+import ReadMore from "../hooks/ReadMore";
+import EditCaption from "./EditCaption";
+import DeletePost from "./DeletePost";
 
-const Backdrop = ({doc, setPostDoc})=>{
- 
+const Backdrop = ({doc, setPostDoc, showBtn})=>{
+
     const closeModal = (e)=>{
         if(e.target.classList.contains("back-drop")){
             setPostDoc(null);
@@ -25,16 +28,31 @@ const Backdrop = ({doc, setPostDoc})=>{
 
     <img className ="profile-pic" src={doc.photoUrl} alt="profile picture"/>
 <div className="post-info">
-<h3>{doc.uploadedBy}</h3>
-<p>{doc.createdAt.toDate().toDateString()} </p>
-
+        <h3>{doc.uploadedBy}</h3>
+<p className="date">{doc.createdAt.toDate().toDateString()} </p>
 </div>
 </div>
 <hr/>
 <div className="post-content">
-    <p>
-    {
+    {showBtn && <> <div className="action-btn">
+
+{<DeletePost setPostDoc={setPostDoc} key={doc.id} id = {useId()}/>}
+{<EditCaption postDoc = {doc} setPostDoc ={setPostDoc} id={doc.id}  key={doc.id}/>}
+  
+
+    </div>
+    
+    </>}
+  <p>
+
+     
+        { <ReadMore>
+
+
+        {
 doc.caption}
+        </ReadMore> }
+
     </p>
 
  
@@ -53,7 +71,6 @@ doc.caption}
 
 </div>
 
-{/* <img alt="imaage" src= {doc.url} style={{maxWidth:"500px", width:"100%", margin:"1rem auto", maxHeight:"80%"}}/> */}
 
 </div>
 

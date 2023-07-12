@@ -93,7 +93,7 @@ label {
 .post-wrapper {
 
 margin: 0 auto;
-width: 90%;
+width: 95%;
 max-width: 900px;
 
 }
@@ -115,6 +115,7 @@ cursor: pointer;
 background-color: #ffffff;
 display: flex;
 max-width: 900px;
+
 }
 
 .post-header {
@@ -135,7 +136,7 @@ margin-right: 10px;
 margin: 0;
 }
 
-.post-info p {
+.date{
 margin: 0;
 font-size: 12px;
 color: #888888;
@@ -159,8 +160,13 @@ color: #888888;
 .aside hr{
   margin: 0;
 }
+.action-btn{
+  display: flex;
+  gap: 1px;
+  margin-top: 1px;
+}
 .post-content{
-  padding: .5rem;
+  padding: 0 .5rem;
   
 }
 .post-content p{
@@ -181,7 +187,7 @@ color: #888888;
   font-size: 18px;
 }
 
-@media screen and (max-width:785px) {
+@media screen and (max-width:720px) {
   
   .homePage{
     flex-direction: column;
@@ -193,21 +199,20 @@ color: #888888;
     width: 90%;
   }
 
-
+.back-drop{
+  align-items: stretch;
+}
 .post-wrapper{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-   position: absolute;
-top: 1%;
+   position: relative;
+
 
 }
 
-.close-button{
-  top: 0;
-  right: 0;
-}
+
  
 .post{
   flex-direction: column-reverse;
@@ -219,7 +224,7 @@ top: 1%;
 }
 .main img{
   margin: 0 auto;
-  
+  width: 400px;
 }
 
 }

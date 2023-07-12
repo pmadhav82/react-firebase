@@ -4,21 +4,21 @@ import Modal from 'react-bootstrap/Modal';
 import {doc, deleteDoc} from "firebase/firestore";
 import { db } from '../fireConfig';
 
-const DeleteTask = ({id})=> {
+const DeletePost = ({id, setPostDoc})=> {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
 
 const deleteHandeler = async ()=>{
-  const docRef = doc(db, "tasks", id);
+  const docRef = doc(db, "imageDocs", id);
   try{
     await  deleteDoc(docRef);
   } catch(er){
     console.log(er)
   }
-  return handleClose()
-
+  handleClose()
+return(setPostDoc(null))
   
 }
 
@@ -26,7 +26,7 @@ const deleteHandeler = async ()=>{
 
   return (
     <>
-      <Button className='btn btn-success' variant="primary" onClick={handleShow}>
+      <Button size='sm' variant='secondary'  onClick={handleShow}>
         Delete
       </Button>
 
@@ -35,10 +35,10 @@ const deleteHandeler = async ()=>{
           <Modal.Title>Do you want to delete?</Modal.Title>
         </Modal.Header>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleClose}>
             Cancle
           </Button>
-          <Button variant="primary" onClick={deleteHandeler}>
+          <Button variant="secondary" onClick={deleteHandeler}>
             Delete
           </Button>
         </Modal.Footer>
@@ -47,4 +47,4 @@ const deleteHandeler = async ()=>{
   );
 }
 
-export default DeleteTask;
+export default DeletePost;
