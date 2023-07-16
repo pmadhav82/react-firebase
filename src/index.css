@@ -135,7 +135,10 @@ margin-right: 10px;
 .post-info h3 {
 margin: 0;
 }
-
+.post-info h3:hover{
+text-decoration: underline;
+transition: 0.2s ease-in;
+}
 .date{
 margin: 0;
 font-size: 12px;
@@ -173,7 +176,15 @@ color: #888888;
   overflow: hidden;
 }
 
+.profile-info{
+display: flex;
+gap:3px;
 
+
+}
+.profile-info b{
+  margin: 0 5px;
+}
 
 
 

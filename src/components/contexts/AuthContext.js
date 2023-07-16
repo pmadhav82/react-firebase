@@ -1,7 +1,8 @@
 import React, {useContext, useState, useEffect} from "react";
 
+import { collection, addDoc, Timestamp,where,query,onSnapshot } from "firebase/firestore";
 import { onAuthStateChanged ,GoogleAuthProvider, signOut, signInWithPopup} from "firebase/auth";
-import { auth } from "../../fireConfig";
+import { auth, db } from "../../fireConfig";
 
 export const AuthContext = React.createContext();
 
@@ -33,9 +34,39 @@ export const AuthProvider = ({children})=>{
   },[])
 
 
-const googleSignIn = ()=>{
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth,provider)
+const googleSignIn = async ()=>{
+    //User ref
+const userRef = collection(db,"Users");
+
+const provider = new GoogleAuthProvider();
+signInWithPopup(auth,provider).then((result)=>{
+
+        // check user doc is already exists
+     onSnapshot(query(userRef,where ("uid", "==",`${result.user.uid}`)),(snap)=>{
+     if(snap.docs.length ===0){
+
+        const userDoc = {
+            name:result.user.displayName,
+            uid:result.user.uid,
+            createdAt: Timestamp.now(),
+            photoURL:result.user.photoURL,
+            followers:[],
+            following:[]
+          }
+          
+          addDoc(userRef, userDoc)
+          
+     }
+    })
+
+
+ 
+
+
+
+
+    });
+
     
 }
 

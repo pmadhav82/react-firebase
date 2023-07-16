@@ -7,11 +7,11 @@ import useQuery from "../hooks/useQuery";
 import { query, where, orderBy, collection } from "firebase/firestore";
 import { auth, db} from "../fireConfig";
 import { Col, Container, Row } from "react-bootstrap";
+import useUser from "../hooks/useUser";
 const Profile = ()=>{
    const {user, userProfileUrl} = useAuth();
    const {docs} = useQuery(query(collection(db, "imageDocs"), where("uid", "==", `${auth.currentUser.uid}`), orderBy("createdAt", "desc")));
 const showBtn = true;
-
 
 
    return(<>
@@ -20,7 +20,7 @@ const showBtn = true;
    <Row>
 
       <Col>
-<ProfileCard key={user.email}  user = {user}  userProfileUrl = {userProfileUrl}/>
+<ProfileCard key={user.email}  user = {user}  userProfileUrl = {userProfileUrl} postNum = {docs.length}/>
     
       
       </Col>

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { storage,auth } from "../fireConfig";
-
 import { ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
 import {  updateProfile } from 'firebase/auth';
 import { useAuth } from "../components/contexts/AuthContext";
 const useStorage = (file)=>{
+   
+
+
 const [error, setError] = useState(null);
 const [progress, setProgress] = useState(0);
 const [url, setUrl] = useState(null);
@@ -25,6 +27,8 @@ setProgress(percentage);
  await updateProfile(auth.currentUser,{photoURL:url});
  setUserProfileUrl(url);
  setUrl(url);
+ 
+
 })
 
 

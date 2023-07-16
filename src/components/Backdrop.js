@@ -1,4 +1,5 @@
-import React, { useId } from "react";
+import React, { useId} from "react";
+import { Link } from "react-router-dom";
 import { X} from "react-bootstrap-icons";
 import ReadMore from "../hooks/ReadMore";
 import EditCaption from "./EditCaption";
@@ -28,7 +29,11 @@ const Backdrop = ({doc, setPostDoc, showBtn})=>{
 
     <img className ="profile-pic" src={doc.photoUrl} alt="profile picture"/>
 <div className="post-info">
-        <h3>{doc.uploadedBy}</h3>
+
+        <h3><Link className="nav-link" to={`/user/${doc.uid}`}>
+        {doc.uploadedBy}    
+        </Link>
+            </h3>
 <p className="date">{doc.createdAt.toDate().toDateString()} </p>
 </div>
 </div>
@@ -37,7 +42,7 @@ const Backdrop = ({doc, setPostDoc, showBtn})=>{
     {showBtn && <> <div className="action-btn">
 
 {<DeletePost setPostDoc={setPostDoc} key={doc.id} id = {useId()}/>}
-{<EditCaption postDoc = {doc} setPostDoc ={setPostDoc} id={doc.id}  key={doc.id}/>}
+{<EditCaption postDoc = {doc} setPostDoc ={setPostDoc}  key={useId()}/>}
   
 
     </div>

@@ -6,8 +6,6 @@ const ImageGrid = ({docs, showBtn})=>{
 
 const [postDoc, setPostDoc] = useState(null);
 
-console.log(postDoc);
-
  return<>
 
     <div className="grid-container">

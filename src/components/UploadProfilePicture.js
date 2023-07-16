@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import "./Sidebar.css";
 import Progress from "./ProgressBar";
+import useUser from "../hooks/useUser";
+import { auth } from "../fireConfig";
 
 
 const UploadProfilePicture = ({handleClose})=>{
-
+const userDetail = useUser(auth.currentUser.uid);
 const [file, setFile] = useState(null);
 
 const [error, setError] = useState(null);
@@ -33,7 +35,7 @@ setError("Please select an image file");
             <input onChange={handleChange} type="file" id="file" />
   <label for="file" className="btn-2">Change profile picture</label>
         
-{file && <Progress handleClose ={handleClose} file = {file} setFile = {setFile}/> }
+{file && <Progress handleClose ={handleClose} file = {file} setFile = {setFile} userDetail={userDetail}/> }
     </form>
        
     </>

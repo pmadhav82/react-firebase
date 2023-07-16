@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./contexts/AuthContext";
 import { createUserWithEmailAndPassword, updateProfile} from "firebase/auth";
-import { auth } from "../fireConfig";
+import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { auth,db } from "../fireConfig";
 import {GoogleButton} from "react-google-button";
-
 const Signup = ()=>{
 const[disabled,setDisabled] = useState(false);
 const navigate = useNavigate();
 const {googleSignIn} = useAuth();
+
+    //User ref
+    const userRef = collection(db,"Users");
 
 const [user,setSignUser] = useState({
   name: "",
@@ -66,6 +69,18 @@ try{
    await createUserWithEmailAndPassword(auth, user.email,user.password);
 
    await updateProfile(auth.currentUser,{displayName: user.name,photoURL:"avatar.png"})
+
+const userDoc = {
+  name:user.name,
+  uid:auth.currentUser.uid,
+  createdAt: Timestamp.now(),
+  photoURL:auth.currentUser.photoURL,
+  followers:[],
+  following:[]
+}
+
+await addDoc(userRef, userDoc);
+
 
 setSignUser({
 name: "",
@@ -140,10 +155,7 @@ setDisabled(false)
 
               <div className="btn-group">
           <GoogleButton onClick = {signInWithGoogle}/>
-      {/* <button className="btn btn-secondary" onClick={signInWithGoogle}>Login with google</button> */}
-  
-           {/* <Link to = "/passwordreset"  className="btn link"> Reset Password</Link> */}
-        
+   
       </div>
       </div>
     

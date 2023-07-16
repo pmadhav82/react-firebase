@@ -1,18 +1,23 @@
 import React from 'react';
+import { updateDoc, doc} from "firebase/firestore";
+import { db , auth} from '../fireConfig';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import useStorage from '../hooks/useStorage';
 import { useEffect } from 'react';
-function Progress({file, setFile, handleClose}) {
+function Progress({file, setFile, handleClose, userDetail}) {
 
   const {progress,url} = useStorage(file);
 
 useEffect( ()=>{
 if(url){
-  
+
+    updateDoc(doc(db,"Users", userDetail.id),{
+        photoURL:auth.currentUser.photoURL
+    }).catch(er=>console.log(er));
+
     setFile(null);
     handleClose()
-}
-
+  }
 
 },[url,setFile])
 

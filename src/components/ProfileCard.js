@@ -3,7 +3,8 @@ import { Button, Container, Row, Col, Image, Dropdown } from "react-bootstrap";
 import UploadProfilePicture from "./UploadProfilePicture";
 import { auth } from "../fireConfig";
 import ImageModal from "./ImageModal";
-const ProfileCard = ({ user, userProfileUrl})=>{
+import { Link } from "react-router-dom";
+const ProfileCard = ({ user, userProfileUrl, postNum})=>{
 
 
     return<>
@@ -29,6 +30,23 @@ const ProfileCard = ({ user, userProfileUrl})=>{
 <Col>
 
 <h4>{user.displayName}</h4> 
+<div className="profile-info">
+    
+<Link className="nav-link" to={`/profile`}>
+<b>{postNum}</b>Posts
+</Link>
+
+ 
+<Link className="nav-link" to={`/followers`}>
+<b>0</b>Followers
+</Link>
+
+<Link className="nav-link" to={`/following`}>
+<b>0</b>Following
+</Link>
+
+   
+</div>
 </Col>
 
                 </Row>
