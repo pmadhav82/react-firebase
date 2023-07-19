@@ -1,40 +1,44 @@
 import React, { useState, useEffect } from "react";
 import { onSnapshot, where,collection, query} from "firebase/firestore";
-import { db} from "../fireConfig";
-const useUser = (id) => {
-    
-const userQuery = query(collection(db,"Users"), where("uid","==",`${id}`));
+import { auth, db} from "../fireConfig";
 
-    const [userDetail, setUser] = useState([]);
+const getUsers = ()=>{
+
+
+    const [users, setUsers]= useState(null);
+ 
+    const userQuery = query(collection(db,"Users"));
+  
     const fetchData = () => {
-
-
     onSnapshot(userQuery, (snap) => {
-        const user = snap.docs.map((doc) => {
+        const usersData = snap.docs.map((doc) => {
             return {
                 id: doc.id,
                 ...doc.data()
             }
-    
+  
         })
     
-        setUser(user);
+    setUsers(usersData);
     
     
     
     })
     
-
-}
-
-
+  
+  }
+  
+  
     useEffect(() => {
-
+  
         return fetchData();
-
+  
     }, [])
+  
+  
 
 
-    return userDetail[0];
+    return {users}
 }
-export default useUser;
+
+export default getUsers;

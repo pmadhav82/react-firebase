@@ -15,7 +15,9 @@ const [url, setUrl] = useState(null);
  const fileName = `${auth.currentUser.email}.${ext}`;
  const storageRef = ref(storage,`/Profile/${fileName}`);
  const uploadTask = uploadBytesResumable(storageRef,file);
-const {setUserProfileUrl} = useAuth();
+
+
+
  useEffect(()=>{
 uploadTask.on("state_changed",(snapshot)=>{
 let percentage = Math.round(snapshot.bytesTransferred/snapshot.totalBytes)*100;
@@ -25,7 +27,6 @@ setProgress(percentage);
 }, async ()=>{
  let url = await getDownloadURL(uploadTask.snapshot.ref);
  await updateProfile(auth.currentUser,{photoURL:url});
- setUserProfileUrl(url);
  setUrl(url);
  
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./ImageGrid.css";
 import Backdrop from "./Backdrop";
 import EditCaption from "./EditCaption";
-const ImageGrid = ({docs, showBtn})=>{
+const ImageGrid = ({docs, showBtn,user})=>{
 
 const [postDoc, setPostDoc] = useState(null);
 
@@ -23,7 +23,7 @@ const [postDoc, setPostDoc] = useState(null);
 
     </div>
 
-  {postDoc && <Backdrop doc = {postDoc} setPostDoc = {setPostDoc} key={postDoc.id} showBtn = {showBtn} />}
+  {postDoc && <Backdrop doc = {postDoc} setPostDoc = {setPostDoc} key={postDoc.id} showBtn = {showBtn}  photoURL={user.photoURL}/>}
     </>
 }
 

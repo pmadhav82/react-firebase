@@ -1,22 +1,41 @@
 
 import React from "react";
-import { collection, orderBy, query } from "firebase/firestore";
+import { collection, orderBy, query, onSnapshot } from "firebase/firestore";
+import { Link } from "react-router-dom";
 import { db } from "../fireConfig";
-import { useAuth } from "./contexts/AuthContext";
 import Welcome from "./Welcome";
 import { Container } from "react-bootstrap";
 import useQuery from "../hooks/useQuery";
-import ImageGrid from "./ImageGrid";
+import getUsers from "../hooks/getUsers";
+import User from "./User";
+import { AuthContext, useAuth } from "./contexts/AuthContext";
 const Home = () => {
-  const { user } = useAuth();
+  const {user} = useAuth();
   const { docs } = useQuery(query(collection(db, "imageDocs"), orderBy("createdAt", "desc")));
+  const {users} = getUsers();
   return (<>
 
   
   
     <Container>
 
-    {user?   <ImageGrid docs={docs} /> : <Welcome/> }
+    {user&&users?   <>
+    <div className = "users-list">
+
+  {users.map((user)=>{
+
+    return <>
+    <Link className="nav-link" to={`/user/${user.uid}`}>
+    <User user = {user}/>
+
+    </Link>
+    </>
+  })}
+
+    </div>
+    
+   
+    </> : <Welcome/> }
 
     </Container>
   </>)

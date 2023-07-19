@@ -89,7 +89,7 @@ name: "",
 })
 setError(null)
 
-navigate("/profile");
+
 
 }catch(er){
 setError(er.message)

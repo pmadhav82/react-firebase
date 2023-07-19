@@ -5,7 +5,7 @@ import ReadMore from "../hooks/ReadMore";
 import EditCaption from "./EditCaption";
 import DeletePost from "./DeletePost";
 
-const Backdrop = ({doc, setPostDoc, showBtn})=>{
+const Backdrop = ({doc, setPostDoc, showBtn, photoURL={photoURL}})=>{
 
     const closeModal = (e)=>{
         if(e.target.classList.contains("back-drop")){
@@ -27,7 +27,7 @@ const Backdrop = ({doc, setPostDoc, showBtn})=>{
 
 <div className="post-header">
 
-    <img className ="profile-pic" src={doc.photoUrl} alt="profile picture"/>
+    <img className ="profile-pic" src={photoURL} alt="profile picture"/>
 <div className="post-info">
 
         <h3><Link className="nav-link" to={`/user/${doc.uid}`}>

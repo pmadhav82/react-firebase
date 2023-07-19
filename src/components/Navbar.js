@@ -9,7 +9,7 @@ import Container from 'react-bootstrap/Container';
 
 
     function Navigation() {
-const {user, logoutHandler, userProfileUrl} = useAuth();
+const {user, logoutHandler} = useAuth();
 const [showDropDown, setShowDropDown] = useState(false);
 
 const dropDownHandeler = ()=> setShowDropDown(!showDropDown);
@@ -25,8 +25,7 @@ const dropDownHandeler = ()=> setShowDropDown(!showDropDown);
                 FireGram
             </Link>
               </Navbar.Brand>
-                {/* {user && <Navbar.Brand>{user.displayName}</Navbar.Brand>} */}
-
+               
 
   
           <Navbar collapseOnSelect  bg="dark" variant="dark" id="responsive-navbar-nav">
@@ -42,7 +41,7 @@ const dropDownHandeler = ()=> setShowDropDown(!showDropDown);
              menuVariant="dark"
             title={
               <Image
-                src={userProfileUrl}
+                src={user.photoURL}
                 roundedCircle
                 width={40}
                 height={40}

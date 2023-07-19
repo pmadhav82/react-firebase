@@ -9,19 +9,21 @@ import { auth, db} from "../fireConfig";
 import { Col, Container, Row } from "react-bootstrap";
 import useUser from "../hooks/useUser";
 const Profile = ()=>{
-   const {user, userProfileUrl} = useAuth();
+   const userDetail = useUser(auth.currentUser.uid);
    const {docs} = useQuery(query(collection(db, "imageDocs"), where("uid", "==", `${auth.currentUser.uid}`), orderBy("createdAt", "desc")));
 const showBtn = true;
 
 
    return(<>
 
+   {  userDetail && <>
 <Container className="m-2">
    <Row>
 
       <Col>
-<ProfileCard key={user.email}  user = {user}  userProfileUrl = {userProfileUrl} postNum = {docs.length}/>
     
+<ProfileCard key={userDetail.id}  user = {userDetail} postNum = {docs.length} />
+
       
       </Col>
 
@@ -30,14 +32,18 @@ const showBtn = true;
       </Col>
    </Row>
 
-
+      
 </Container>
 
      <Container>
-     <ImageGrid docs = {docs} showBtn = {showBtn}  />
+     <ImageGrid docs = {docs} showBtn = {showBtn} user = {userDetail} />
 
      </Container>
-  
+
+   
+   
+   </>}
+
    </>)
 
 }

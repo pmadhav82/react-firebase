@@ -3,30 +3,21 @@ import React, {useContext, useState, useEffect} from "react";
 import { collection, addDoc, Timestamp,where,query,onSnapshot } from "firebase/firestore";
 import { onAuthStateChanged ,GoogleAuthProvider, signOut, signInWithPopup} from "firebase/auth";
 import { auth, db } from "../../fireConfig";
-
+import { useNavigate } from "react-router-dom";
 export const AuthContext = React.createContext();
 
 
 
 
 export const AuthProvider = ({children})=>{
+    const navigate = useNavigate();
+
     
   const [user, setUser]= useState(null);
-  const[userProfileUrl, setUserProfileUrl] = useState(null);
   useEffect(()=>{
   
    const unscribe = onAuthStateChanged(auth,(user)=>{
       setUser(user);
-
-      if(user){
-          let photoURL = user.photoURL;
-          if(photoURL!== null){
-              setUserProfileUrl(photoURL);
-          }else{
-            setUserProfileUrl("avatar.png");
-          }
-          
-      }
       
   })
   return unscribe;
@@ -35,6 +26,7 @@ export const AuthProvider = ({children})=>{
 
 
 const googleSignIn = async ()=>{
+   
     //User ref
 const userRef = collection(db,"Users");
 
@@ -58,14 +50,9 @@ signInWithPopup(auth,provider).then((result)=>{
           
      }
     })
+    navigate("/profile");
 
-
- 
-
-
-
-
-    });
+    }).catch(er=>console.log(er));
 
     
 }
@@ -79,7 +66,7 @@ const logoutHandler = async ()=>{
     }
     }
 
-    return(<AuthContext.Provider value = {{googleSignIn, logoutHandler, user, userProfileUrl, setUserProfileUrl}}>
+    return(<AuthContext.Provider value = {{googleSignIn, logoutHandler, user}}>
 
         {children}
     </AuthContext.Provider>)
