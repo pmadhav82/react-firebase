@@ -14,9 +14,35 @@ export const AuthProvider = ({children})=>{
 
     
   const [user, setUser]= useState(null);
+const [currentUser, setCurrentUser ] = useState(null);
+
   useEffect(()=>{
   
    const unscribe = onAuthStateChanged(auth,(user)=>{
+    if(auth.currentUser){
+
+ 
+        const userQuery = query(collection(db,"Users"), where("uid","==",`${auth.currentUser.uid}`));
+
+        onSnapshot(userQuery, (snap) => {
+            const newUser = snap.docs.map((doc) => {
+                return {
+                    id: doc.id,
+                    ...doc.data()
+                }
+        
+            })
+         
+            setCurrentUser(newUser[0]);
+        
+        
+        
+        })
+        
+    
+
+
+    }
       setUser(user);
       navigate("/profile");
   })
@@ -66,7 +92,7 @@ const logoutHandler = async ()=>{
     }
     }
 
-    return(<AuthContext.Provider value = {{googleSignIn, logoutHandler, user}}>
+    return(<AuthContext.Provider value = {{googleSignIn, logoutHandler, user, currentUser}}>
 
         {children}
     </AuthContext.Provider>)

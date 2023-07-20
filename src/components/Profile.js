@@ -6,22 +6,22 @@ import useQuery from "../hooks/useQuery";
 import { query, where, orderBy, collection } from "firebase/firestore";
 import { auth, db} from "../fireConfig";
 import { Col, Container, Row } from "react-bootstrap";
-import useUser from "../hooks/useUser";
+import { useAuth } from "./contexts/AuthContext";
 const Profile = ()=>{
-   const userDetail = useUser(auth.currentUser.uid);
+   const {currentUser} = useAuth();
    const {docs} = useQuery(query(collection(db, "imageDocs"), where("uid", "==", `${auth.currentUser.uid}`), orderBy("createdAt", "desc")));
 const showBtn = true;
 
 
    return(<>
 
-   {  userDetail && <>
+   {  currentUser && <>
 <Container className="m-2">
    <Row>
 
       <Col>
     
-<ProfileCard key={userDetail.id}  user = {userDetail} postNum = {docs.length} />
+<ProfileCard key={currentUser.id}  user = {currentUser} showbtn={!showBtn} postNum = {docs.length} />
 
       
       </Col>
@@ -35,7 +35,7 @@ const showBtn = true;
 </Container>
 
      <Container>
-     <ImageGrid key={auth.currentUser.uid} docs = {docs} showBtn = {showBtn} user = {userDetail} />
+     <ImageGrid key={auth.currentUser.uid} docs = {docs} showBtn = {showBtn} user = {currentUser} />
 
      </Container>
 

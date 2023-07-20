@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useId } from "react";
 import { collection, orderBy, query, onSnapshot } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { db } from "../fireConfig";
@@ -24,8 +24,8 @@ const Home = () => {
   {users.map((user)=>{
 
     return <>
-    <Link className="nav-link" to={`/${user.uid}`}>
-    <User user = {user}/>
+    <Link key={user.email} className="nav-link" to={`/${user.uid}`}>
+    <User key={user.id} user = {user}/>
 
     </Link>
     </>
@@ -34,7 +34,7 @@ const Home = () => {
     </div>
     
    
-    </> : <Welcome/> }
+    </> : <Welcome /> }
 
     </Container>
   </>)

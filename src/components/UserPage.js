@@ -4,13 +4,15 @@ import ProfileCard from "./ProfileCard";
 import ImageGrid from "./ImageGrid";
 import useQuery from "../hooks/useQuery";
 import { query, where, orderBy, collection } from "firebase/firestore";
-import { db} from "../fireConfig";
+import { auth, db} from "../fireConfig";
 import { Col, Container, Row } from "react-bootstrap";
 import useUser from "../hooks/useUser";
+import FollowButton from "./FollowButton";
 
 const UserPage = ()=>{
 const {id} = useParams();
 const user = useUser(id);
+const currentUser = useUser(auth.currentUser.uid);
 
 const {docs} = useQuery(query(collection(db, "imageDocs"), where("uid", "==", `${   id}`), orderBy("createdAt", "desc")));
 const showBtn = false;
@@ -23,7 +25,7 @@ const showBtn = false;
 
       <Col>
     
-<ProfileCard  key={user.id}  user = {user} postNum = {docs.length} />
+<ProfileCard  key={user.id}  user = {user} showbtn={true} postNum = {docs.length} />
 
       
       </Col>

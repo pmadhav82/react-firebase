@@ -196,7 +196,12 @@ gap:3px;
 }
 
 
-
+.follow-btn{
+  display: flex;
+  justify-content: flex-start;
+  gap: 5px;
+  align-items: center;
+}
 
 
 

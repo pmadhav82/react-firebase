@@ -1,8 +1,9 @@
 import React from "react";
 import { Button, Container, Row, Col, Image, Dropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import FollowButton from "./FollowButton";
 
-const ProfileCard = ({ user,postNum})=>{
+const ProfileCard = ({ user,postNum, showbtn})=>{
 
 
     return<>
@@ -26,8 +27,10 @@ const ProfileCard = ({ user,postNum})=>{
                 <Row>
 
 <Col>
+<div className="follow-btn">
+<h4>{user.name}</h4> {showbtn && <FollowButton target_user_id={user.id}/>}  
 
-<h4>{user.name}</h4> 
+</div>
 <div className="profile-info">
     
 <Link className="nav-link" to={`/profile`}>

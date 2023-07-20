@@ -20,7 +20,11 @@ function App() {
     <Routes>
       <Route  path='/' element = {<Home/>}/>
 
-      <Route path='/:id' element = {<UserPage/>}/>
+      <Route path='/:id' element = {
+      <ProtectedRoute>
+<UserPage/>
+      </ProtectedRoute>
+      }/>
 <Route path = "/login" element ={<RedirectRoute>
 <Login/>
 </RedirectRoute>
