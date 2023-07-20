@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { onSnapshot, where,collection, query} from "firebase/firestore";
+import { onSnapshot,collection, query} from "firebase/firestore";
 import { auth, db} from "../fireConfig";
+
 
 const getUsers = ()=>{
 
@@ -10,6 +11,8 @@ const getUsers = ()=>{
     const userQuery = query(collection(db,"Users"));
   
     const fetchData = () => {
+        //Users except logged in user 
+        if(auth.currentUser){
     onSnapshot(userQuery, (snap) => {
         const usersData = snap.docs.map((doc) => {
             return {
@@ -18,14 +21,17 @@ const getUsers = ()=>{
             }
   
         })
-    
-    setUsers(usersData);
-    
-    
+
+    const realUsers= usersData.filter((user)=>{return user.uid !== auth.currentUser.uid})
+
+setUsers(realUsers);
+
+
+
     
     })
     
-  
+}
   }
   
   

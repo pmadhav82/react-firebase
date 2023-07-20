@@ -9,7 +9,7 @@ import Profile from './components/Profile';
 import { Route ,Routes} from "react-router-dom";
 import {AuthProvider} from "./components/contexts/AuthContext";
 import {ProtectedRoute, RedirectRoute} from "./components/contexts/ProtectedRoute";
-import UserPage from './UserPage';
+import UserPage from './components/UserPage';
 
 function App() {
   return (<>
@@ -20,7 +20,7 @@ function App() {
     <Routes>
       <Route  path='/' element = {<Home/>}/>
 
-      <Route path='/user/:id' element = {<UserPage/>}/>
+      <Route path='/:id' element = {<UserPage/>}/>
 <Route path = "/login" element ={<RedirectRoute>
 <Login/>
 </RedirectRoute>

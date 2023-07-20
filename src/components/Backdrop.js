@@ -30,9 +30,9 @@ const Backdrop = ({doc, setPostDoc, showBtn, photoURL={photoURL}})=>{
     <img className ="profile-pic" src={photoURL} alt="profile picture"/>
 <div className="post-info">
 
-        <h3><Link className="nav-link" to={`/user/${doc.uid}`}>
+        <h3>
         {doc.uploadedBy}    
-        </Link>
+        
             </h3>
 <p className="date">{doc.createdAt.toDate().toDateString()} </p>
 </div>

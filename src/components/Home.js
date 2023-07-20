@@ -11,7 +11,6 @@ import User from "./User";
 import { AuthContext, useAuth } from "./contexts/AuthContext";
 const Home = () => {
   const {user} = useAuth();
-  const { docs } = useQuery(query(collection(db, "imageDocs"), orderBy("createdAt", "desc")));
   const {users} = getUsers();
   return (<>
 
@@ -25,7 +24,7 @@ const Home = () => {
   {users.map((user)=>{
 
     return <>
-    <Link className="nav-link" to={`/user/${user.uid}`}>
+    <Link className="nav-link" to={`/${user.uid}`}>
     <User user = {user}/>
 
     </Link>

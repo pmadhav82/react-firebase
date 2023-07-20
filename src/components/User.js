@@ -1,9 +1,11 @@
 import React from "react";
 import { Button, Container, Row, Col, Image ,Card} from "react-bootstrap";
-
+import { query, where, orderBy, collection } from "firebase/firestore";
+import useQuery from "../hooks/useQuery";
+import { db} from "../fireConfig";
 const User = ({user})=>{
 
-
+    const {docs} = useQuery(query(collection(db, "imageDocs"), where("uid", "==", `${user.uid}`), orderBy("createdAt", "desc")));
     return<>
     <Container>
     
@@ -18,6 +20,7 @@ const User = ({user})=>{
 <div className="profile">
 <h4>{user.name}</h4>
 <div className="profile-info">
+    <b>{docs.length}</b> Posts
 
 <b>{user.followers.length}</b>Followers
 

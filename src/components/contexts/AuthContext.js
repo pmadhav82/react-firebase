@@ -18,7 +18,7 @@ export const AuthProvider = ({children})=>{
   
    const unscribe = onAuthStateChanged(auth,(user)=>{
       setUser(user);
-      
+      navigate("/profile");
   })
   return unscribe;
   
@@ -50,7 +50,7 @@ signInWithPopup(auth,provider).then((result)=>{
           
      }
     })
-    navigate("/profile");
+ 
 
     }).catch(er=>console.log(er));
 

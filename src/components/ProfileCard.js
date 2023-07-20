@@ -36,11 +36,11 @@ const ProfileCard = ({ user,postNum})=>{
 
  
 <Link className="nav-link" to={`/followers`}>
-<b>{user.followers}</b>Followers
+<b>{user.followers.length}</b>Followers
 </Link>
 
 <Link className="nav-link" to={`/following`}>
-<b>{user.following}</b>Following
+<b>{user.following.length}</b>Following
 </Link>
 
    

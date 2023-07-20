@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useId } from "react";
 import ProfileCard from "./ProfileCard";
-import { useAuth } from "./contexts/AuthContext";
 import ImageGrid from "./ImageGrid";
 import ImageModal from "./ImageModal";
 import useQuery from "../hooks/useQuery";
@@ -36,7 +35,7 @@ const showBtn = true;
 </Container>
 
      <Container>
-     <ImageGrid docs = {docs} showBtn = {showBtn} user = {userDetail} />
+     <ImageGrid key={auth.currentUser.uid} docs = {docs} showBtn = {showBtn} user = {userDetail} />
 
      </Container>
 
