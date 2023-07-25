@@ -3,6 +3,8 @@ import { Button, Container, Row, Col, Image ,Card} from "react-bootstrap";
 import { query, where, orderBy, collection } from "firebase/firestore";
 import useQuery from "../hooks/useQuery";
 import { db} from "../fireConfig";
+import FollowButton from "./FollowButton";
+import { Link } from "react-router-dom";
 const User = ({user})=>{
 
     const {docs} = useQuery(query(collection(db, "imageDocs"), where("uid", "==", `${user.uid}`), orderBy("createdAt", "desc")));
@@ -18,7 +20,16 @@ const User = ({user})=>{
 <Card.Body>
 
 <div className="profile">
-<h4>{user.name}</h4>
+    <div className="follow-btn">
+    <Link key={user.email} className="nav-link" to={`/${user.uid}`}>
+    
+<h5>{user.name}</h5> 
+    </Link>
+
+
+{<FollowButton target_user_id={user.id} />}
+
+    </div>
 <div className="profile-info">
     <b>{docs.length}</b> Posts
 

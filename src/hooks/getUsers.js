@@ -44,7 +44,7 @@ setUsers(realUsers);
   
 
 
-    return {users}
+    return {users, setUsers}
 }
 
 export default getUsers;

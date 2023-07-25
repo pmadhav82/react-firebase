@@ -192,15 +192,21 @@ gap:3px;
 
 }
 .profile-info b{
-  margin: 0 5px;
+  margin: 0 1px;
 }
 
 
 .follow-btn{
   display: flex;
   justify-content: flex-start;
-  gap: 5px;
+  gap: 3px;
   align-items: center;
+}
+.follow-btn h5{
+  white-space: nowrap;
+}
+.follow-btn h5:hover{
+  text-decoration: underline;
 }
 
 
