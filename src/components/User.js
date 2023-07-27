@@ -13,10 +13,10 @@ const User = ({user})=>{
     
    <Row >
 
-<Card className="user-card" style={{flexDirection:"row"}} >
+<Card className="user-card" style={{flexDirection:"row", padding:"0", margin:"0"}} >
 <Image src={user.photoURL} alt="242x200"  
-                width={100}
-                height={100} />
+                width={90}
+                height={90} />
 <Card.Body>
 
 <div className="profile">

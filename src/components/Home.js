@@ -4,34 +4,26 @@ import React  from "react";
 import Welcome from "./Welcome";
 import { Container } from "react-bootstrap";
 import getUsers from "../hooks/getUsers";
-import User from "./User";
 import { useAuth } from "./contexts/AuthContext";
+import DisplayUsers from "./DisplayUsers";
+import SearchBar from "./SearchBar";
+import {useSearchValue} from "./contexts/SearchValueContext";
 const Home = () => {
   const {user} = useAuth();
   const {users} = getUsers();
-
+const {searchValue} = useSearchValue();
   
   
 
 
   return (<>
 
-    <Container>
+    <Container className = "users">
 
     {user&&users?   <>
-    <div className = "users-list">
-
-  {users.map((user)=>{
-
-    return <>
-  
-    <User key={user.id} user = {user}/>
-
-  
-    </>
-  })}
-
-    </div>
+    <SearchBar/>
+    
+<DisplayUsers searchValue= {searchValue} users={users}/>
     
    
     </> : <Welcome /> }

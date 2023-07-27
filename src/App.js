@@ -10,13 +10,18 @@ import { Route ,Routes} from "react-router-dom";
 import {AuthProvider} from "./components/contexts/AuthContext";
 import {ProtectedRoute, RedirectRoute} from "./components/contexts/ProtectedRoute";
 import UserPage from './components/UserPage';
+import { SearchValueProvider } from './components/contexts/SearchValueContext';
 
 function App() {
+
+
+
   return (<>
   
 <AuthProvider>
     <Navbar/>
     
+<SearchValueProvider>
     <Routes>
       <Route  path='/' element = {<Home/>}/>
 
@@ -49,6 +54,11 @@ function App() {
   
 
     </Routes>
+
+
+
+</SearchValueProvider>
+
 
     </AuthProvider>
     </>

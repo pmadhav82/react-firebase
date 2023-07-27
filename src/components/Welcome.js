@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { Link} from "react-router-dom";
 import { Container, Row,Col, Button } from "react-bootstrap";
 import { useAuth } from "./contexts/AuthContext";
@@ -17,11 +17,25 @@ await googleSignIn();
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     return<>
     
       
   <Container className="d-flex justify-content-center align-items-center flex-column mt-5">
-
 <Row>
   <Col><h2>Welcome to FireGram!</h2></Col>
 </Row>

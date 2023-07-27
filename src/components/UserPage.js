@@ -7,7 +7,6 @@ import { query, where, orderBy, collection } from "firebase/firestore";
 import { auth, db} from "../fireConfig";
 import { Col, Container, Row } from "react-bootstrap";
 import useUser from "../hooks/useUser";
-import FollowButton from "./FollowButton";
 
 const UserPage = ()=>{
 const {id} = useParams();

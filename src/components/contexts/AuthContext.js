@@ -4,6 +4,8 @@ import { collection, addDoc, Timestamp,where,query,onSnapshot } from "firebase/f
 import { onAuthStateChanged ,GoogleAuthProvider, signOut, signInWithPopup} from "firebase/auth";
 import { auth, db } from "../../fireConfig";
 import { useNavigate } from "react-router-dom";
+
+
 export const AuthContext = React.createContext();
 
 

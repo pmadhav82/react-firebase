@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState,  useId } from "react";
 import "./ImageGrid.css";
 import Backdrop from "./Backdrop";
-import EditCaption from "./EditCaption";
 const ImageGrid = ({docs, showBtn,user})=>{
 
 const [postDoc, setPostDoc] = useState(null);
 
  return<>
 
-    <div className="grid-container">
+    <div key={useId()} className="grid-container">
       {docs && docs.map((doc)=>{
         return <>
-        <div key={doc.id} className="grid-item">
-<img onClick= {()=> {setPostDoc(doc)} } src={doc.url}/>
+        <div key={doc.id}  className="grid-item">
+<img key={useId()} onClick= {()=> {setPostDoc(doc)} } src={doc.url}/>
 
         </div>
 
