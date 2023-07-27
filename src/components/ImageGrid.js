@@ -7,11 +7,11 @@ const [postDoc, setPostDoc] = useState(null);
 
  return<>
 
-    <div key={useId()} className="grid-container">
+    <div  className="grid-container">
       {docs && docs.map((doc)=>{
         return <>
         <div key={doc.id}  className="grid-item">
-<img key={useId()} onClick= {()=> {setPostDoc(doc)} } src={doc.url}/>
+<img onClick= {()=> {setPostDoc(doc)} } src={doc.url}/>
 
         </div>
 
