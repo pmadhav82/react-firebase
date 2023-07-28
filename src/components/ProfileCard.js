@@ -1,16 +1,18 @@
-import React from "react";
-import { Button, Container, Row, Col, Image, Dropdown } from "react-bootstrap";
+import React, {useState} from "react";
+import {  Container, Row, Col, Image} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import FollowButton from "./FollowButton";
+import ShowFollowers from "./ShowFollowers";
 
-const ProfileCard = ({ user,postNum, showbtn})=>{
+const ProfileCard = ({ user,postNum, showbtn , users})=>{
 
+    const [showModal, setShowModal] = useState(false);
 
     return<>
     
     <Container>
 
-
+    <ShowFollowers users={users} showModal={showModal} setShowModal= {setShowModal} key={2} mainUser={user}/>
 
 
    <Row className=" d-flex justify-content-around">
@@ -38,13 +40,13 @@ const ProfileCard = ({ user,postNum, showbtn})=>{
 </Link>
 
  
-<Link className="nav-link" to={`/followers`}>
+<p onClick={()=>setShowModal(true)} className="nav-link">
 <b>{user.followers.length}</b>Followers
-</Link>
+</p>
 
-<Link className="nav-link" to={`/following`}>
+<p className="nav-link" to={`/following`}>
 <b>{user.following.length}</b>Following
-</Link>
+</p>
 
    
 </div>

@@ -1,21 +1,26 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ProfileCard from "./ProfileCard";
 import ImageGrid from "./ImageGrid";
 import useQuery from "../hooks/useQuery";
 import { query, where, orderBy, collection } from "firebase/firestore";
-import { auth, db} from "../fireConfig";
+import {  auth, db} from "../fireConfig";
 import { Col, Container, Row } from "react-bootstrap";
 import useUser from "../hooks/useUser";
+import getUsers from "../hooks/getUsers";
+
 
 const UserPage = ()=>{
+   const navigate = useNavigate();
 const {id} = useParams();
 const user = useUser(id);
-const currentUser = useUser(auth.currentUser.uid);
+const {users} = getUsers();
 
 const {docs} = useQuery(query(collection(db, "imageDocs"), where("uid", "==", `${   id}`), orderBy("createdAt", "desc")));
 const showBtn = false;
     return<>
+{id === auth.currentUser.uid? navigate("/profile"):<>
+
     {user && <>
     
     
@@ -23,8 +28,11 @@ const showBtn = false;
    <Row>
 
       <Col>
+      {users && 
+      
+<ProfileCard  key={user.id}  user = {user} showbtn={true} postNum = {docs.length} users={users}  />
+      }
     
-<ProfileCard  key={user.id}  user = {user} showbtn={true} postNum = {docs.length} />
 
       
       </Col>
@@ -45,6 +53,10 @@ const showBtn = false;
     
     </>}
     
+
+
+</>}
+
     </>
 }
 

@@ -192,6 +192,11 @@ gap:3px;
 
 
 }
+.profile-info p:hover{
+  cursor: pointer;
+  transform: scale(1.02);
+}
+
 .profile-info b{
   margin: 0 1px;
 }

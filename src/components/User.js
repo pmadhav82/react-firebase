@@ -21,7 +21,7 @@ const User = ({user})=>{
 
 <div className="profile">
     <div className="follow-btn">
-    <Link key={user.email} className="nav-link" to={`/${user.uid}`}>
+    <Link  key={user.email}  replace ={true} className="nav-link" to={`/${user.uid}`}>
     
 <h5>{user.name}</h5> 
     </Link>

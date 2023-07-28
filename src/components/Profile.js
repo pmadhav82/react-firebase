@@ -1,4 +1,4 @@
-import React, { useId, useState } from "react";
+import React from "react";
 import ProfileCard from "./ProfileCard";
 import ImageGrid from "./ImageGrid";
 import ImageModal from "./ImageModal";
@@ -8,7 +8,6 @@ import { auth, db} from "../fireConfig";
 import { Col, Container, Row } from "react-bootstrap";
 import { useAuth } from "./contexts/AuthContext";
 import getUsers from "../hooks/getUsers";
-import ShowFollowers from "./ShowFollowers";
 const Profile = ()=>{
    const {users} = getUsers();
    const {currentUser} = useAuth();
@@ -25,10 +24,10 @@ const showBtn = true;
 
       <Col>
     
-<ProfileCard key={currentUser.id}  user = {currentUser} showbtn={!showBtn} postNum = {docs.length} />
 {users &&
+<ProfileCard key={currentUser.id} users = {users} user = {currentUser} showbtn={!showBtn} postNum = {docs.length} />
 
-      <ShowFollowers users={users} key={2} mainUser={currentUser}/>
+      
 }
       </Col>
 

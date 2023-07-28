@@ -16,7 +16,7 @@ const inputHandeler = (e)=>{
         
         <Col sm={4}>
           
-            <Form.Control 
+            <Form.Control style={{minWidth:"300px"}}
             value={searchValue}
               type="search"
               placeholder="Search"

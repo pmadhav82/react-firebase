@@ -5,10 +5,9 @@ import Modal from 'react-bootstrap/Modal';
 import DisplayUsers from "./DisplayUsers";
 import SearchBar from "./SearchBar";
 import {useSearchValue} from "./contexts/SearchValueContext";
-const ShowFollowers = ({users, mainUser, onHide})=>{
+const ShowFollowers = ({users, mainUser, showModal, setShowModal})=>{
     const {searchValue} = useSearchValue();
-    const [lgShow, setLgShow] = useState(false);
-
+    
   
 
 const followers = users.filter((user)=>{
@@ -17,12 +16,12 @@ return mainUser.followers.includes(user.id);
 
 
     return<>
-        <Button onClick={() => setLgShow(true)}>Large modal</Button>
+      
  <Modal
       
       size="lg"
-      show={lgShow}
-      onHide={() => setLgShow(false)}
+      show={showModal}
+      onHide={() => setShowModal(false)}
       aria-labelledby="example-modal-sizes-title-lg"
     >
 
@@ -42,7 +41,7 @@ return mainUser.followers.includes(user.id);
        
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={()=> setLgShow(false)}>Close</Button>
+        <Button onClick={()=> setShowModal(false)}>Close</Button>
       </Modal.Footer>
     </Modal>
     

@@ -22,9 +22,8 @@ const getUsers = ()=>{
   
         })
 
-    const realUsers= usersData.filter((user)=>{return user.uid !== auth.currentUser.uid})
-
-setUsers(realUsers);
+   
+setUsers(usersData);
 
 
 
