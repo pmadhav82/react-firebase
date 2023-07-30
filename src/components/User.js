@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Container, Row, Col, Image ,Card} from "react-bootstrap";
 import { query, where, orderBy, collection } from "firebase/firestore";
 import useQuery from "../hooks/useQuery";
-import { db} from "../fireConfig";
+import { auth, db} from "../fireConfig";
 import FollowButton from "./FollowButton";
 import { Link } from "react-router-dom";
 const User = ({user})=>{
@@ -27,7 +27,7 @@ const User = ({user})=>{
     </Link>
 
 
-{<FollowButton target_user_id={user.id} />}
+{auth.currentUser.uid !== user.uid && <FollowButton target_user_id={user.id} />}
 
     </div>
 <div className="profile-info">

@@ -32,7 +32,7 @@ const userQuery = query(collection(db,"Users"), where("uid","==",`${id}`));
 
         return fetchData();
 
-    }, [])
+    }, [id])
 
 
     return userDetail[0];

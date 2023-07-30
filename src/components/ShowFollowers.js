@@ -1,7 +1,7 @@
 import React ,{useState} from "react";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-
+import { Image } from "react-bootstrap";
 import DisplayUsers from "./DisplayUsers";
 import SearchBar from "./SearchBar";
 import {useSearchValue} from "./contexts/SearchValueContext";
@@ -27,7 +27,16 @@ return mainUser.followers.includes(user.id);
 
 <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          Followers of {mainUser.name}
+       
+        <Image className="m-1"
+                src={mainUser.photoURL}
+                roundedCircle
+                width={40}
+                height={40}
+              />
+              {mainUser.name}
+
+          
         </Modal.Title>
       </Modal.Header>
 
