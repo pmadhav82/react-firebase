@@ -5,23 +5,26 @@ import { Image } from "react-bootstrap";
 import DisplayUsers from "./DisplayUsers";
 import SearchBar from "./SearchBar";
 import {useSearchValue} from "./contexts/SearchValueContext";
-const ShowFollowers = ({users, mainUser, showFollowers, setShowFollowers})=>{
+
+
+const ShowFollowing = ({users, mainUser, ShowFollowing, setShowFollowing})=>{
+
     const {searchValue} = useSearchValue();
     
-  
 
-const followers = users.filter((user)=>{
-return mainUser.followers.includes(user.id);
-})
+    const following = users.filter((user)=>{
+
+        return mainUser.following.includes(user.id);
+    })
 
 
     return<>
-      
+    
  <Modal
       
       size="lg"
-      show={showFollowers}
-      onHide={() => setShowFollowers(false)}
+      show={ShowFollowing}
+      onHide={() => setShowFollowing(false)}
       aria-labelledby="example-modal-sizes-title-lg"
     >
 
@@ -44,18 +47,17 @@ return mainUser.followers.includes(user.id);
       <Modal.Body>
       <SearchBar/>
    
-   <DisplayUsers searchValue= {searchValue} users={followers}/>
+   <DisplayUsers searchValue= {searchValue} users={following}/>
        
    
        
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={()=> setShowFollowers(false)}>Close</Button>
+        <Button onClick={()=> setShowFollowing(false)}>Close</Button>
       </Modal.Footer>
     </Modal>
     
     </>
-
-
 }
-export default ShowFollowers;
+
+export default ShowFollowing;

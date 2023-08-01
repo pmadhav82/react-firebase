@@ -3,18 +3,19 @@ import {  Container, Row, Col, Image} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import FollowButton from "./FollowButton";
 import ShowFollowers from "./ShowFollowers";
+import ShowFollowing from "./ShowFollowing";
 
 const ProfileCard = ({ user,postNum, showbtn , users})=>{
 
-    const [showModal, setShowModal] = useState(false);
+    const [showFollowers, setShowFollowers] = useState(false);
+    const [showFollowing, setShowFollowing] = useState(false);
 
     return<>
     
     <Container>
 
-    <ShowFollowers users={users} showModal={showModal} setShowModal= {setShowModal} key={2} mainUser={user}/>
-
-
+    <ShowFollowers users={users} showFollowers={showFollowers} setShowFollowers= {setShowFollowers} key={2} mainUser={user}/>
+<ShowFollowing ShowFollowing={showFollowing} mainUser={user} setShowFollowing={setShowFollowing} users={users} key={3}/>
    <Row className=" d-flex justify-content-around">
     <Col>
 
@@ -40,11 +41,11 @@ const ProfileCard = ({ user,postNum, showbtn , users})=>{
 </Link>
 
  
-<p onClick={()=>setShowModal(true)} className="nav-link">
+<p onClick={()=>setShowFollowers(true)} className="nav-link">
 <b>{user.followers.length}</b>Followers
 </p>
 
-<p className="nav-link" to={`/following`}>
+<p onClick={()=>setShowFollowing(true)} className="nav-link" >
 <b>{user.following.length}</b>Following
 </p>
 
