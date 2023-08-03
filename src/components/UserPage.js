@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import ProfileCard from "./ProfileCard";
 import ImageGrid from "./ImageGrid";
@@ -16,10 +16,16 @@ const {id} = useParams();
 const user = useUser(id);
 const {users} = getUsers();
 
+useEffect(()=>{
+    if(id === auth.currentUser.uid){
+        return navigate("/profile");
+    }
+},[id])
+
+
 const {docs} = useQuery(query(collection(db, "imageDocs"), where("uid", "==", `${   id}`), orderBy("createdAt", "desc")));
 const showBtn = false;
     return<>
-{id === auth.currentUser.uid? navigate("/profile"):<>
 
     {user && <>
     
@@ -50,8 +56,7 @@ const showBtn = false;
      </Container>
 
    
-    
-    </>}
+
     
 
 

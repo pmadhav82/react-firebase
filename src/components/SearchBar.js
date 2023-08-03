@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useSearchValue } from "./contexts/SearchValueContext";
 const SearchBar = ()=> {
@@ -10,6 +10,11 @@ const inputHandeler = (e)=>{
     setSearchValue(e.target.value.toLowerCase());
     
   }
+
+
+  useEffect(()=>{
+return setSearchValue("");
+  },[])
   return (
     <Container className="mt-5">
       <Row>

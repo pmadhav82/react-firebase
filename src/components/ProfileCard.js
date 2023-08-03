@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 import FollowButton from "./FollowButton";
 import ShowFollowers from "./ShowFollowers";
 import ShowFollowing from "./ShowFollowing";
+import ShowProfilePic from "./ShowProfilePic";
 
 const ProfileCard = ({ user,postNum, showbtn , users})=>{
 
     const [showFollowers, setShowFollowers] = useState(false);
     const [showFollowing, setShowFollowing] = useState(false);
-
+const [showProfilePic, setShowProfilePic] = useState(false);
     return<>
     
     <Container>
@@ -19,13 +20,13 @@ const ProfileCard = ({ user,postNum, showbtn , users})=>{
    <Row className=" d-flex justify-content-around">
     <Col>
 
- <Image src={user.photoURL} alt="242x200"  roundedCircle
+ <Image className="user-profile-picture" onClick={()=>setShowProfilePic(true)} src={user.photoURL} alt="242x200"  roundedCircle
                 width={150}
                 height={150} />
                 </Col>
 
                 </Row>
-
+<ShowProfilePic ShowProfilePic={showProfilePic} photoUR0L={user.photoURL} setShowProfilePic={setShowProfilePic} key={1235}/>
                 
                 <Row>
 

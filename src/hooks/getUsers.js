@@ -35,8 +35,11 @@ setUsers(usersData);
   
   
     useEffect(() => {
+        if(auth.currentUser){
+
+            return fetchData();
+        }
   
-        return fetchData();
   
     }, [])
   

@@ -14,6 +14,7 @@ const EditCaption =({id, postDoc, setPostDoc})=> {
   const handleShow = () => setShow(true);
 
 const [caption, setCaption] = useState(postDoc.caption);
+const docRef = doc(db,"imageDocs", id);
 
 
 
@@ -24,7 +25,6 @@ const inputHandeler = (e)=>{
 
 const formHandeler =  async (e)=>{
     e.preventDefault();
-const docRef = doc(db,"imageDocs", id);
 
 
 if(caption ===""){

@@ -66,6 +66,20 @@ label {
   height: 10rem;
   width: 40%;
 } 
+
+.user-profile-picture:hover{
+cursor: pointer;
+transform: scale(1.02);
+}
+.profile-picture img{
+  display: block;
+  border-radius: 2rem;
+  max-width: 45%;
+  max-height: 60%;
+margin: 0 auto;
+
+}
+
 .btn-group{
   display: flex;
  gap: 20px;
@@ -264,6 +278,8 @@ gap:3px;
   width: 400px;
 }
 
-
+.profile-picture img{
+  max-width: 80%;
+}
 
 }

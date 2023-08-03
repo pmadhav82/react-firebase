@@ -1,5 +1,5 @@
-import React, { useId} from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+
 import { X} from "react-bootstrap-icons";
 import ReadMore from "../hooks/ReadMore";
 import EditCaption from "./EditCaption";
@@ -41,8 +41,8 @@ const Backdrop = ({doc, setPostDoc, showBtn, photoURL={photoURL}})=>{
 <div className="post-content">
     {showBtn && <> <div className="action-btn">
 
-{<DeletePost setPostDoc={setPostDoc} key={doc.id} id = {useId()}/>}
-{<EditCaption postDoc = {doc} setPostDoc ={setPostDoc}  key={useId()}/>}
+{<DeletePost setPostDoc={setPostDoc} key={doc.id}  id = {doc.id}/>}
+{<EditCaption postDoc = {doc} setPostDoc ={setPostDoc}  id={doc.id} key={7}/>}
   
 
     </div>

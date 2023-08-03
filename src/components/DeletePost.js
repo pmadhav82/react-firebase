@@ -8,10 +8,10 @@ const DeletePost = ({id, setPostDoc})=> {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const docRef = doc(db, "imageDocs", id);
 
 
 const deleteHandeler = async ()=>{
-  const docRef = doc(db, "imageDocs", id);
   try{
     await  deleteDoc(docRef);
   } catch(er){
