@@ -5,7 +5,7 @@ import ReadMore from "../hooks/ReadMore";
 import EditCaption from "./EditCaption";
 import DeletePost from "./DeletePost";
 
-const Backdrop = ({doc, setPostDoc, showBtn, photoURL={photoURL}})=>{
+const Backdrop = ({doc, setPostDoc, showBtn, photoURL})=>{
 
     const closeModal = (e)=>{
         if(e.target.classList.contains("back-drop")){
@@ -19,7 +19,7 @@ const Backdrop = ({doc, setPostDoc, showBtn, photoURL={photoURL}})=>{
     <button onClick={()=>setPostDoc(null)} className="close-button"><X size={40}/></button>
     <div className="post">
 <div className = "main">
-<img src={doc.url} alt="main picture"/>
+<img src={doc.url} alt=""/>
    
 </div>
 
@@ -27,7 +27,7 @@ const Backdrop = ({doc, setPostDoc, showBtn, photoURL={photoURL}})=>{
 
 <div className="post-header">
 
-    <img className ="profile-pic" src={photoURL} alt="profile picture"/>
+    <img className ="profile-pic" src={photoURL} alt=""/>
 <div className="post-info">
 
         <h3>

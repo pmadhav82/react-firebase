@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import { storage,auth } from "../fireConfig";
 import { ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
 import {  updateProfile } from 'firebase/auth';
-import { useAuth } from "../components/contexts/AuthContext";
 const useStorage = (file)=>{
    
 

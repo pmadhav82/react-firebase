@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import  "./Sidebar.css";
 
 
-import { Image, Container,Form, Button} from "react-bootstrap";
+import { Image, Container} from "react-bootstrap";
 
 const FilePreview = ({file})=>{
 

@@ -1,4 +1,4 @@
-import { Upload } from "react-bootstrap-icons";
+
 import React, { useState } from "react"
 import { Button, Form, ProgressBar } from "react-bootstrap"
 import FilePreview from "./FilePreview";
@@ -85,7 +85,7 @@ handleClose()
 
       <Form.Group controlId="formFileSm" className="mb-3">
         <Form.Label>Upload photo</Form.Label>
-        <Form.Control type="file" size="sm" onChange={fileHandeler} />
+        <Form.Control  type="file" size="sm" onChange={fileHandeler} />
       </Form.Group>
 
      

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { onSnapshot} from "firebase/firestore";
 import { auth } from "../fireConfig";
 const useQuery = (query) => {

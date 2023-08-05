@@ -11,10 +11,10 @@ const ShowProfilePic = ({photoUR0L, ShowProfilePic, setShowProfilePic})=>{
       show={ShowProfilePic}
       onHide={() => setShowProfilePic(false)}
       aria-labelledby="example-modal-sizes-title-lg">
-    <Modal.Body closeButton>
+    <Modal.Body >
 
 <div className = "profile-picture">
-<img src={photoUR0L} alt="profile-picture"/>
+<img src={photoUR0L} alt="profile"/>
    
 </div>
 

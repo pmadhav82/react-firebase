@@ -21,9 +21,9 @@ const {searchValue} = useSearchValue();
     <Container className = "users">
 
     {user&&users?   <>
-    <SearchBar/>
+    <SearchBar key={8}/>
     
-<DisplayUsers searchValue= {searchValue} users={users}/>
+<DisplayUsers key={user.id} searchValue= {searchValue} users={users}/>
     
    
     </> : <Welcome /> }

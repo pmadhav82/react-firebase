@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { onSnapshot, where,collection, query} from "firebase/firestore";
 import { db} from "../fireConfig";
 const useUser = (id) => {

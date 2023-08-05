@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container, Row, Col, Image ,Card} from "react-bootstrap";
+import {  Container, Row,  Image ,Card} from "react-bootstrap";
 import { query, where, orderBy, collection } from "firebase/firestore";
 import useQuery from "../hooks/useQuery";
 import { auth, db} from "../fireConfig";
@@ -15,9 +15,9 @@ const User = ({user})=>{
 
 <Card className="user-card" style={{flexDirection:"row", padding:"0", margin:"0", maxWidth:"350px"}} >
 <Image src={user.photoURL} alt="242x200"  
-                width={90}
-                height={90} />
-<Card.Body>
+                width={80}
+                height={80} />
+<Card.Body style={{padding:"0", margin : "5px 3px"}}>
 
 <div className="profile">
     <div className="follow-btn">

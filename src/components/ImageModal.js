@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Upload} from "react-bootstrap-icons";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import FilePreview from './FilePreview';
 import UploadForm from './UploadForm';
 import UploadProfilePicture from './UploadProfilePicture';
 

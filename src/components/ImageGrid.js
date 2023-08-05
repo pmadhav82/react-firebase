@@ -1,4 +1,4 @@
-import React, { useState,  useId } from "react";
+import React, { useState } from "react";
 import "./ImageGrid.css";
 import Backdrop from "./Backdrop";
 const ImageGrid = ({docs, showBtn,user})=>{
@@ -11,7 +11,7 @@ const [postDoc, setPostDoc] = useState(null);
       {docs && docs.map((doc)=>{
         return <>
         <div key={doc.id}  className="grid-item">
-<img onClick= {()=> {setPostDoc(doc)} } src={doc.url}/>
+<img onClick= {()=> {setPostDoc(doc)} } src={doc.url} alt=""/>
 
         </div>
 
