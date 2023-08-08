@@ -12,15 +12,21 @@ const {currentUser} = useAuth();
 
 
 const handleUnfollow =  async ()=>{
+    try{
 
-await updateDoc(doc(db,"Users",currentUser.id ),{
-    following:arrayRemove(target_user_id)
-});
-await updateDoc(doc(db,"Users", target_user_id),{
-    followers: arrayRemove(currentUser.id)
-});
+        await updateDoc(doc(db,"Users",currentUser.id ),{
+            following:arrayRemove(target_user_id)
+        });
+        await updateDoc(doc(db,"Users", target_user_id),{
+            followers: arrayRemove(currentUser.id)
+        });
+        setIsFollowing(false);
 
-setIsFollowing(false);
+    } catch(er){
+        console.log(er.message)
+    }
+
+
 }
 
 const handleFollow = async()=>{
