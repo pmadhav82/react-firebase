@@ -7,25 +7,25 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 const FollowButton = ({ target_user_id})=>{
 
-const[isFollowing, setIsFollowing] = useState(false);
+const[isFollowing, setIsFollowing] = useState(null);
 const {currentUser} = useAuth();
 
 
 const handleUnfollow =  async ()=>{
     try{
-
         await updateDoc(doc(db,"Users",currentUser.id ),{
             following:arrayRemove(target_user_id)
         });
         await updateDoc(doc(db,"Users", target_user_id),{
             followers: arrayRemove(currentUser.id)
         });
+        
         setIsFollowing(false);
 
-    } catch(er){
+
+    }catch(er){
         console.log(er.message)
     }
-
 
 }
 
@@ -53,10 +53,11 @@ const unscribe =()=>{
 currentUser.following.includes(target_user_id) ? setIsFollowing(true) : setIsFollowing(false);
 }
 return unscribe;
-},[])
+},[target_user_id])
     return<>
 <div>
-    {isFollowing? <>
+
+    {isFollowing && 
         <Dropdown>
       <Dropdown.Toggle variant="secondary" size="sm" id="dropdown-basic">
         Following
@@ -70,9 +71,12 @@ return unscribe;
       </Dropdown.Menu>
 
 </Dropdown>
+}
+{!isFollowing &&
+
+     <button onClick={handleFollow} className="btn btn-sm btn-primary">Follow</button>
+}
     
-    </>
-    : <button onClick={handleFollow} className="btn btn-sm btn-primary">Follow</button>}
 </div>
     </>
 }
