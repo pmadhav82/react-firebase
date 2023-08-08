@@ -33,7 +33,7 @@ setError("Please select an image file");
 <div className="info">{error && <div className="error"> {error}</div>}</div>
 
             <input onChange={handleChange} type="file" id="file" />
-  <label for="file" className="btn-2">Change profile picture</label>
+  <label htmlFor="file" className="btn-2">Change profile picture</label>
         
 {file && <Progress handleClose ={handleClose} file = {file} setFile = {setFile} userDetail={currentUser}/> }
     </form>

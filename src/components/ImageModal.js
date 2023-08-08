@@ -29,7 +29,7 @@ function ImageModal() {
           <Modal.Title>Add new photo</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <UploadProfilePicture handleClose = {handleClose}/>
+          {/* <UploadProfilePicture handleClose = {handleClose}/> */}
        <UploadForm handleClose = {handleClose}/>
         </Modal.Body>
         <Modal.Footer>

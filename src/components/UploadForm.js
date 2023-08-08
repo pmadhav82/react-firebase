@@ -84,8 +84,12 @@ handleClose()
 
 
       <Form.Group controlId="formFileSm" className="mb-3">
-        <Form.Label>Upload photo</Form.Label>
-        <Form.Control  type="file" size="sm" onChange={fileHandeler} />
+  
+<input type="file"  onChange={fileHandeler} id="file-button" hidden/>
+<label className="image-upload-btn" htmlFor="file-button">
+  Upload new photo
+</label>
+
       </Form.Group>
 
      

@@ -238,6 +238,20 @@ gap:3px;
   font-size: 18px;
 }
 
+
+
+.image-upload-btn{
+
+  background-color: indigo;
+  color: white;
+  padding: 0.5rem;
+  font-family: sans-serif;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  font-weight: 500;
+
+}
+
 @media screen and (max-width:720px) {
   
   .homePage{
