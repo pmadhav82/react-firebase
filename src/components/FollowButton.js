@@ -49,8 +49,12 @@ setIsFollowing(true);
 
 useEffect(()=>{
 const unscribe =()=>{
+if(currentUser.following.includes(target_user_id)){
+    return setIsFollowing(true)
+}else{
+    return setIsFollowing(false);
+}
 
-currentUser.following.includes(target_user_id) ? setIsFollowing(true) : setIsFollowing(false);
 }
 return unscribe;
 },[target_user_id])
