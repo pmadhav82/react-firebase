@@ -5,7 +5,6 @@ import { Upload} from "react-bootstrap-icons";
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import UploadForm from './UploadForm';
-import UploadProfilePicture from './UploadProfilePicture';
 
 function ImageModal() {
   const [show, setShow] = useState(false);
@@ -29,7 +28,7 @@ function ImageModal() {
           <Modal.Title>Add new photo</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {/* <UploadProfilePicture handleClose = {handleClose}/> */}
+  
        <UploadForm handleClose = {handleClose}/>
         </Modal.Body>
         <Modal.Footer>

@@ -26,7 +26,8 @@ const [showProfilePic, setShowProfilePic] = useState(false);
                 </Col>
 
                 </Row>
-<ShowProfilePic ShowProfilePic={showProfilePic} photoUR0L={user.photoURL} setShowProfilePic={setShowProfilePic} key={1235}/>
+
+<ShowProfilePic ShowProfilePic={showProfilePic} user={user} setShowProfilePic={setShowProfilePic} key={1235}/>
                 
                 <Row>
 

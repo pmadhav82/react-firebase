@@ -36,7 +36,7 @@ const showBtn = false;
       <Col>
       {users && 
       
-<ProfileCard  key={user.id}  user = {user} showbtn={true} postNum = {docs.length} users={users}  />
+<ProfileCard  key={user.id}  user = {user} showbtn={!showBtn} postNum = {docs.length} users={users}  />
       }
     
 

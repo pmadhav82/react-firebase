@@ -71,12 +71,20 @@ label {
 cursor: pointer;
 transform: scale(1.02);
 }
+.profile-picture{
+  display: flex;
+  flex-direction: column;
+  gap:1rem;
+  justify-content: center;
+  align-items: center;
+}
+
 .profile-picture img{
   display: block;
   border-radius: 2rem;
   max-width: 45%;
   max-height: 60%;
-margin: 0 auto;
+
 
 }
 

@@ -4,7 +4,7 @@ import Progress from "./ProgressBar";
 import { useAuth } from "./contexts/AuthContext";
 
 
-const UploadProfilePicture = ({handleClose})=>{
+const UploadProfilePicture = ()=>{
     const {currentUser} = useAuth();
 
 const [file, setFile] = useState(null);
@@ -35,7 +35,7 @@ setError("Please select an image file");
             <input onChange={handleChange} type="file" id="file" />
   <label htmlFor="file" className="btn-2">Change profile picture</label>
         
-{file && <Progress handleClose ={handleClose} file = {file} setFile = {setFile} userDetail={currentUser}/> }
+{file && <Progress file = {file} setFile = {setFile} userDetail={currentUser}/> }
     </form>
        
     </>

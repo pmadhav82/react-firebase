@@ -4,7 +4,7 @@ import { db , auth} from '../fireConfig';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import useStorage from '../hooks/useStorage';
 import { useEffect } from 'react';
-function Progress({file, setFile, handleClose, userDetail}) {
+function Progress({file, setFile, userDetail}) {
 
   const {progress,url} = useStorage(file);
 
@@ -16,7 +16,7 @@ if(url){
     }).catch(er=>console.log(er));
 
     setFile(null);
-    handleClose()
+    
   }
 
 },[url,setFile])

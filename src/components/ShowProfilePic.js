@@ -1,7 +1,9 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
+import { auth } from "../fireConfig";
+import UploadProfilePicture from "./UploadProfilePicture";
 
-const ShowProfilePic = ({photoUR0L, ShowProfilePic, setShowProfilePic})=>{
+const ShowProfilePic = ({user, ShowProfilePic, setShowProfilePic})=>{
 
 
     return<>
@@ -14,8 +16,8 @@ const ShowProfilePic = ({photoUR0L, ShowProfilePic, setShowProfilePic})=>{
     <Modal.Body >
 
 <div className = "profile-picture">
-<img src={photoUR0L} alt="profile"/>
-   
+<img src={user.photoURL} alt="profile"/>
+   {auth.currentUser.uid === user.uid && <UploadProfilePicture/>}
 </div>
 
     </Modal.Body>
