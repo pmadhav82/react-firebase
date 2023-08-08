@@ -7,6 +7,7 @@ import ShowFollowing from "./ShowFollowing";
 import ShowProfilePic from "./ShowProfilePic";
 
 const ProfileCard = ({ user,postNum, showbtn , users})=>{
+    
 
     const [showFollowers, setShowFollowers] = useState(false);
     const [showFollowing, setShowFollowing] = useState(false);
@@ -33,7 +34,7 @@ const [showProfilePic, setShowProfilePic] = useState(false);
 
 <Col>
 <div className="follow-btn">
-<h4>{user.name}</h4> {showbtn && <FollowButton target_user_id={user.id}/>}  
+<h4>{user.name}</h4> {showbtn && <FollowButton target_user_id={user.id} />}  
 
 </div>
 <div className="profile-info">

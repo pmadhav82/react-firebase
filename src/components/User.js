@@ -5,8 +5,8 @@ import useQuery from "../hooks/useQuery";
 import { auth, db} from "../fireConfig";
 import FollowButton from "./FollowButton";
 import { Link } from "react-router-dom";
-const User = ({user})=>{
 
+const User = ({user})=>{
     const {docs} = useQuery(query(collection(db, "imageDocs"), where("uid", "==", `${user.uid}`), orderBy("createdAt", "desc")));
     return<>
     <Container>

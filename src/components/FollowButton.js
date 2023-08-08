@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useAuth } from "./contexts/AuthContext";
 import { updateDoc, doc , arrayUnion, arrayRemove} from "firebase/firestore";
 import { db } from "../fireConfig";
@@ -6,10 +6,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 
 const FollowButton = ({ target_user_id})=>{
-
-const[isFollowing, setIsFollowing] = useState(null);
-const {currentUser} = useAuth();
-
+    const {currentUser} = useAuth();
 
 const handleUnfollow =  async ()=>{
     try{
@@ -20,8 +17,7 @@ const handleUnfollow =  async ()=>{
             followers: arrayRemove(currentUser.id)
         });
         
-        setIsFollowing(false);
-
+     
 
     }catch(er){
         console.log(er.message)
@@ -38,7 +34,6 @@ await updateDoc(doc(db,"Users",target_user_id),{
     followers: arrayUnion(currentUser.id)
 })
 
-setIsFollowing(true);
 
 }catch(er){
     console.log(er.message)
@@ -47,21 +42,10 @@ setIsFollowing(true);
 }
 
 
-useEffect(()=>{
-const unscribe =()=>{
-if(currentUser.following.includes(target_user_id)){
-    return setIsFollowing(true)
-}else{
-    return setIsFollowing(false);
-}
-
-}
-return unscribe;
-},[target_user_id])
     return<>
 <div>
 
-    {isFollowing && 
+    {currentUser.following.includes(target_user_id) ?
         <Dropdown>
       <Dropdown.Toggle variant="secondary" size="sm" id="dropdown-basic">
         Following
@@ -75,12 +59,12 @@ return unscribe;
       </Dropdown.Menu>
 
 </Dropdown>
-}
-{!isFollowing &&
+
+:
 
      <button onClick={handleFollow} className="btn btn-sm btn-primary">Follow</button>
 }
-    
+
 </div>
     </>
 }
