@@ -1,9 +1,22 @@
 import React, { useState } from "react";
 import "./ImageGrid.css";
-import Backdrop from "./Backdrop";
+import ShowPost from "./ShowPost";
+
 const ImageGrid = ({docs, showBtn,user})=>{
 
-const [postDoc, setPostDoc] = useState(null);
+  const [show, setShow] = useState(false);
+
+  
+  const handleShow = () => setShow(true);
+  
+  
+  
+  const [postDoc, setPostDoc] = useState(null);
+  
+  const handleClose = () => {
+    setShow(false);
+setPostDoc(null);
+  }
 
  return<>
 
@@ -11,7 +24,9 @@ const [postDoc, setPostDoc] = useState(null);
       {docs && docs.map((doc)=>{
         return <>
         <div key={doc.id}  className="grid-item">
-<img onClick= {()=> {setPostDoc(doc)} } src={doc.url} alt=""/>
+<img onClick= {()=> {setPostDoc(doc)
+handleShow();
+} } src={doc.url} alt=""/>
 
         </div>
 
@@ -21,8 +36,8 @@ const [postDoc, setPostDoc] = useState(null);
 
 
     </div>
+    {postDoc && <ShowPost doc={postDoc} setPostDoc = {setPostDoc} key={postDoc.id} showBtn = {showBtn}  photoURL={user.photoURL} handleClose={handleClose} show={show}/>}
 
-  {postDoc && <Backdrop doc = {postDoc} setPostDoc = {setPostDoc} key={postDoc.id} showBtn = {showBtn}  photoURL={user.photoURL}/>}
     </>
 }
 

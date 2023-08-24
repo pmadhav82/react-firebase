@@ -13,12 +13,12 @@ const toggleReadMore = ()=>{
 
     {children.length>150 && window.innerWidth<720? <>
     
-{readMore? children.slice(0,150):children}
-<Button variant="Link" className="btn btn-link" size="sm" onClick={toggleReadMore}>
+{readMore? children.slice(0,100):children}
+<button className="read-more-btn" onClick={toggleReadMore}>
 
-    {readMore? " ...Read more": " Show less"}
-    </Button>    
-    
+{readMore? " ...Read more": " Show less"}
+</button>
+
     
     </>:<>{children}</>}
     </>

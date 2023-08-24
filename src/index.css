@@ -127,15 +127,16 @@ transform: scale(1.02);
 .post-wrapper {
 
 margin: 0 auto;
+
 width: 95%;
 max-width: 900px;
 
 }
 .close-button {
 position: absolute;
-top: 2%;
-right: 2%;
-padding: 2px;
+top: 0;
+right: 0;
+padding: 1px;
 background-color: #fff;
 border: none;
 font-size: 14px;
@@ -149,6 +150,7 @@ cursor: pointer;
 background-color: #ffffff;
 display: flex;
 max-width: 900px;
+width: 100%;
 
 }
 
@@ -185,12 +187,13 @@ color: #888888;
   max-width: 100%;
   width: 450px;
   height: auto;
-  max-height:100%;
+  
   
 }
 .aside{
 
   flex-grow: 1;
+  min-width: 50%;
 }
 .aside hr{
   margin: 0;
@@ -259,6 +262,12 @@ gap:3px;
   font-weight: 500;
 
 }
+.read-more-btn{
+  outline: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
 
 @media screen and (max-width:720px) {
   
@@ -297,7 +306,7 @@ gap:3px;
 }
 .main img{
   margin: 0 auto;
-  width: 400px;
+
 }
 
 .profile-picture img{

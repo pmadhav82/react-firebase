@@ -1,23 +1,35 @@
 import React from "react";
 
-import { X} from "react-bootstrap-icons";
+import Modal from 'react-bootstrap/Modal';
 import ReadMore from "../hooks/ReadMore";
 import EditCaption from "./EditCaption";
 import DeletePost from "./DeletePost";
 
-const Backdrop = ({doc, setPostDoc, showBtn, photoURL})=>{
+import Button from 'react-bootstrap/Button';
+import { X} from "react-bootstrap-icons";
 
-    const closeModal = (e)=>{
-        if(e.target.classList.contains("back-drop")){
-            setPostDoc(null);
-        }
-    }
+const ShowPost = ({doc, handleClose, setPostDoc, showBtn, photoURL, show})=>{
+
 
     return<>
-<div className="back-drop" onClick={closeModal} >
-<div className="post-wrapper">
-    <button onClick={()=>setPostDoc(null)} className="close-button"><X size={40}/></button>
-    <div className="post">
+    
+    
+    <Modal
+        show={show}
+        onHide={handleClose}
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+        keyboard={false}
+       
+        size="lg"
+      >
+    
+        <Modal.Body  style={{padding:"0",
+    margin:"0"}}>
+  
+       <button onClick={()=>handleClose()} className="close-button"><X size={40}/></button> 
+
+        <div className="post">
 <div className = "main">
 <img src={doc.url} alt=""/>
    
@@ -74,11 +86,16 @@ doc.caption}
     </div>
 
 
-</div>
 
-
-</div>
-
+        </Modal.Body>
+        <Modal.Footer style={{padding:"0",
+    margin:"0"}} >
+          <Button  variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        
+        </Modal.Footer>
+      </Modal>
     </>
 }
-export default Backdrop;
+export default ShowPost;

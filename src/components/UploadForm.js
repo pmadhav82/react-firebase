@@ -14,7 +14,7 @@ const [caption, setCaption] = useState("");
 
 const [url, setUrl] = useState(null);
 const [progress, setProgress] = useState(null);
-
+const[disable,setDisable] = useState(false);
 
 // image ref in firestore
 const imageRef = collection(db,"imageDocs");
@@ -39,6 +39,7 @@ if(selectedFil && fileType.includes(selectedFil.type)){
 
 const formHandeler = (e)=>{
 e.preventDefault();
+setDisable(true);
 const storageRef = ref(storage,`Images/${file.name}-${new Date().getTime().toString()}`);
 const uploadTask = uploadBytesResumable(storageRef,file);
 
@@ -64,7 +65,7 @@ uploadTask.on("state_changed", (snapshot)=>{
 
 await addDoc(imageRef,myDoc);
  
-
+setDisable(false);
 //close the modal
 handleClose()
 
@@ -113,7 +114,7 @@ handleClose()
 { !url && progress && <ProgressBar className="m-2" now={progress} label={`${progress}%`} />}
 
 <Form.Group>
-      <Button variant="primary" disabled={!url && progress} className="m-2 w-100" type="submit" onClick={formHandeler}>
+      <Button variant="primary" disabled={disable} className="m-2 w-100" type="submit" onClick={formHandeler}>
         Submit
       </Button>
     
